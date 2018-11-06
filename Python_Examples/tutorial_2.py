@@ -113,29 +113,13 @@ actions = ["move 1", "move -1", "turn 1", "turn -1"]
 def getRandomAction():
     return actions[np.random.randint(0, len(actions))]
 
-def getPixelIndex(channel, x, y):
-    if channel == 'R':
-        chan = 0
-    elif channel == 'G':
-        chan = 1
-    elif channel == 'B':
-        chan = 2
-    else:
-        return False
 
-    width = 320
-    height = 240
-    index = (chan * width * height) + (y * width) + x
-    return index
-
+"""
+Pixel vector stored as [R, G, B, R, G, B, ... ] 
+Moving left to right acros the first row, then down to second, etc etc]
+"""
 def getRGBPixelFromFrame(frame, x, y):
-    """
-    rIndex = getPixelIndex('R', x, y)
-    gIndex = getPixelIndex('G', x, y)
-    bIndex = getPixelIndex('B', x, y)
-    rgb = (frame[rIndex], frame[gIndex], frame[bIndex])
-    return rgb
-    """
+
     width = 320
     height = 240
 
@@ -208,7 +192,7 @@ while world_state.is_mission_running:
         frame = world_state.video_frames[0].pixels
         #cmap = Image.frombytes('RGB', (320, 240), bytes(world_state.video_frames[0].pixels))
         #cmap.show()
-        rgb = getRGBPixelFromFrame(frame, int(320/2), int(240/2))
+        rgb = getRGBPixelFromFrame(frame, int(1), int(1))
 
         print("Obs")
         print(msg)
