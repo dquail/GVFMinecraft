@@ -66,7 +66,7 @@ def draw_voronoi(original, img, subdiv):
 
 
 if __name__ == '__main__':
-
+  #TO GET FROM BGR to RGB image = image[:, :, ::-1] # or image = image[:, :, (2, 1, 0)]
   # Define window names
   win_delaunay = "Delaunay Triangulation"
   win_voronoi = "Voronoi Diagram"
@@ -80,7 +80,7 @@ if __name__ == '__main__':
 
   # Read in the image.
   #1920X1080
-  img = cv2.imread("christmastree.jpg");
+  img = cv2.imread("mine.jpg");
   #cv2.imshow('image', img)
   #cv2.waitKey(0)
   # Keep a copy around
@@ -96,7 +96,7 @@ if __name__ == '__main__':
 
   # Create an array of points.
   points = [];
-  numberOfRandomPoints = 1500
+  numberOfRandomPoints = 100
   #TODO - remove afte rtesting
 
   #randomYs = np.random.choice(size[0], numberOfRandomPoints, replace=True)
@@ -138,7 +138,9 @@ if __name__ == '__main__':
     draw_point(img, p, (0, 0, 255))
   """
   # Allocate space for Voronoi Diagram
-  img_voronoi = np.zeros(img.shape, dtype=img.dtype)
+  dtype = img.dtype
+  shape = img.shape
+  img_voronoi = np.zeros(shape, dtype=img.dtype)
 
   # Draw Voronoi diagram
   draw_voronoi(img, img_voronoi, subdiv)
