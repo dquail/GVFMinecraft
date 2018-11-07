@@ -31,6 +31,8 @@ import cv2
 from Voronoi import *
 from constants import *
 from StateRepresentation import *
+from simpleMission import *
+from BehaviorPolicy import *
 
 from PIL import ImageTk
 from PIL import Image
@@ -42,202 +44,112 @@ else:
 
   print = functools.partial(print, flush=True)
 
+class Foreground:
 
-# More interesting generator string: "3;7,44*49,73,35:1,159:4,95:13,35:13,159:11,95:10,159:14,159:6,35:6,95:6;12;"
-# Less interesting generator string: "3;7,220*1,5*3,2;3;,biome_1"
+  def __init__(self):
+    self.agent_host = MalmoPython.AgentHost()
+    self.agent_host.setObservationsPolicy(MalmoPython.ObservationsPolicy.LATEST_OBSERVATION_ONLY)
+    self.agent_host.setVideoPolicy(MalmoPython.VideoPolicy.LATEST_FRAME_ONLY)
+    self.behaviorPolicy = BehaviorPolicy()
+    self.stateRepresentation = StateRepresentation()
 
-missionXML = '''<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-            <Mission xmlns="http://ProjectMalmo.microsoft.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-
-              <About>
-                <Summary>Hello world!</Summary>
-              </About>
-
-              <ServerSection>
-                <ServerInitialConditions>
-                    <Time>
-                        <StartTime>12000</StartTime>
-                        <AllowPassageOfTime>false</AllowPassageOfTime>
-                    </Time>
-                    <Weather>clear</Weather>
-                </ServerInitialConditions>
-                <ServerHandlers>
-                  <FlatWorldGenerator generatorString="3;7,44*49,73,35:1,159:4,95:13,35:13,159:11,95:10,159:14,159:6,35:6,95:6;12;"/>
-                  <DrawingDecorator>
-                    <DrawLine x1="20" y1="56" z1="-20" x2="20" y2="56" z2="100" type = "sand"/>
-                    <DrawLine x1="20" y1="57" z1="-20" x2="20" y2="57" z2="100" type = "sand"/>
-                    <DrawLine x1="20" y1="58" z1="-20" x2="20" y2="58" z2="100" type = "sand"/>
-                    <DrawLine x1="20" y1="59" z1="-20" x2="20" y2="59" z2="100" type = "sand"/>
-
-                    <DrawLine x1="11" y1="56" z1="-20" x2="-50" y2="56" z2="-20" type = "gold_block"/>
-                    <DrawLine x1="11" y1="57" z1="-20" x2="-50" y2="57" z2="-20" type = "gold_block"/>
-                    <DrawLine x1="11" y1="58" z1="-20" x2="-50" y2="58" z2="-20" type = "gold_block"/>
-                    <DrawLine x1="11" y1="59" z1="-20" x2="-50" y2="59" z2="-20" type = "gold_block"/>
-
-                    <DrawLine x1="-20" y1="56" z1="-8" x2="-20" y2="56" z2="20" type = "brick_block"/>
-                    <DrawLine x1="-20" y1="57" z1="-8" x2="-20" y2="57" z2="20" type = "brick_block"/>
-                    <DrawLine x1="-20" y1="58" z1="-8" x2="-20" y2="58" z2="20" type = "brick_block"/>
-                    <DrawLine x1="-20" y1="59" z1="-8" x2="-20" y2="59" z2="20" type = "brick_block"/>                    
-
-                    <DrawLine x1="-10" y1="56" z1="20" x2="9" y2="56" z2="20" type = "diamond_block"/>
-                    <DrawLine x1="-10" y1="57" z1="20" x2="9" y2="57" z2="20" type = "diamond_block"/>
-                    <DrawLine x1="-10" y1="58" z1="20" x2="9" y2="58" z2="20" type = "diamond_block"/>
-                    <DrawLine x1="-10" y1="59" z1="20" x2="9" y2="59" z2="20" type = "diamond_block"/>    
-
-                  </DrawingDecorator>
-                  <ServerQuitFromTimeUp timeLimitMs="300000"/>
-                  <ServerQuitWhenAnyAgentFinishes/>
-                </ServerHandlers>
-              </ServerSection>
-
-              <AgentSection mode="Survival">
-                <Name>MalmoTutorialBot</Name>
-                <AgentStart>
-                    <Placement x="0.5" y="56" z="0.5" yaw="0"/>
-                </AgentStart>
-                <AgentHandlers>
-                    <VideoProducer want_depth="false">
-                        <Width>''' + str(WIDTH) + '''</Width>
-                        <Height>''' + str(HEIGHT) + '''</Height>
-                    </VideoProducer>
-                    <ObservationFromGrid>
-                        <Grid name="floor3x3">
-                            <min x="-1" y="0" z="-1"/>
-                            <max x="1" y="0" z="1"/>
-                        </Grid>
-                    </ObservationFromGrid>
-                    <ObservationFromFullStats/>
-                    <DiscreteMovementCommands />
-                </AgentHandlers>
-              </AgentSection>
-            </Mission>'''
-
-def getRandomPixelIndexs(numberOfPixels, width, height):
-  pointsOfInterest = []
-
-  randomYs = np.random.choice(height, numberOfPixels, replace=True)
-  randomXs = np.random.choice(width, numberOfPixels, replace=True)
-
-  for i in range(numberOfPixels):
-    point = randomXs[i], randomYs[i]
-    pointsOfInterest.append(point)
-
-  return pointsOfInterest
-
-
-# Create default Malmo objects:
-# Translates to Move forward, Move back, Turn 90 degrees right, Turn 90 degrees left
-actions = ["move 1", "move -1", "turn 1", "turn -1"]
-def getRandomAction():
-  return actions[np.random.randint(0, len(actions))]
-
-
-"""
-Pixel vector stored as [R, G, B, R, G, B, ... ] 
-Moving left to right acros the first row, then down to second, etc etc]
-"""
-
-
-def getRGBPixelFromFrame(frame, x, y):
-  r = frame[3 * (x + y * WIDTH)]
-  g = frame[1 + 3 * (x + y * WIDTH)]
-  b = frame[2 + 3 * (x + y * WIDTH)]
-  return (r, g, b)
-
-
-agent_host = MalmoPython.AgentHost()
-agent_host.setObservationsPolicy(MalmoPython.ObservationsPolicy.LATEST_OBSERVATION_ONLY)
-agent_host.setVideoPolicy(MalmoPython.VideoPolicy.LATEST_FRAME_ONLY)
-
-try:
-  agent_host.parse(sys.argv)
-except RuntimeError as e:
-  print('ERROR:', e)
-  print(agent_host.getUsage())
-  exit(1)
-if agent_host.receivedArgument("help"):
-  print(agent_host.getUsage())
-  exit(0)
-
-my_mission = MalmoPython.MissionSpec(missionXML, True)
-my_mission_record = MalmoPython.MissionRecordSpec()
-
-# Attempt to start a mission:
-max_retries = 3
-for retry in range(max_retries):
-  try:
-    agent_host.startMission(my_mission, my_mission_record)
-    break
-  except RuntimeError as e:
-    if retry == max_retries - 1:
-      print("Error starting mission:", e)
+  def start_agent_host(self):
+    try:
+      self.agent_host.parse(sys.argv)
+    except RuntimeError as e:
+      print('ERROR:', e)
+      print(self.agent_host.getUsage())
       exit(1)
-    else:
-      time.sleep(2)
+    if self.agent_host.receivedArgument("help"):
+      print(self.agent_host.getUsage())
+      exit(0)
 
-# Loop until mission starts:
-print("Waiting for the mission to start ", end=' ')
-world_state = agent_host.getWorldState()
-while not world_state.has_mission_begun:
-  print(".", end="")
-  time.sleep(0.1)
-  world_state = agent_host.getWorldState()
-  for error in world_state.errors:
-    print("Error:", error.text)
+    #missionXML is from simpleMission.py
+    my_mission = MalmoPython.MissionSpec(missionXML, True)
+    my_mission_record = MalmoPython.MissionRecordSpec()
 
-print()
-print("Mission running ", end=' ')
+    # Attempt to start a mission:
+    max_retries = 3
+    for retry in range(max_retries):
+      try:
+        self.agent_host.startMission(my_mission, my_mission_record)
+        break
+      except RuntimeError as e:
+        if retry == max_retries - 1:
+          print("Error starting mission:", e)
+          exit(1)
+        else:
+          time.sleep(2)
 
-actionCount = 0
-randomPixelIndexes = getRandomPixelIndexs(numberOfPixels=NUMBER_OF_PIXEL_SAMPLES, width=WIDTH, height=HEIGHT)
+    # Loop until mission starts:
+    print("Waiting for the mission to start ", end=' ')
+    self.world_state = self.agent_host.getWorldState()
+    while not self.world_state.has_mission_begun:
+      print(".", end="")
+      time.sleep(0.1)
+      self.world_state = self.agent_host.getWorldState()
+      for error in self.world_state.errors:
+        print("Error:", error.text)
 
-# Loop until mission ends:
-while world_state.is_mission_running:
-  actionCount += 1
-  print(".", end="")
-
-  # action = getRandomAction()
-  action = "move 1"
-  print("Action (" + str(actionCount) + "):" + str(action))
-
-  agent_host.sendCommand(action)
-  world_state = agent_host.getWorldState()
-  time.sleep(1.1)
-  for error in world_state.errors:
-    print("Error:", error.text)
-  if world_state.number_of_observations_since_last_state > 0:  # Have any observations come in?
-
-    msg = world_state.observations[0].text  # Yes, so get the text
-
-    frame = world_state.video_frames[0].pixels
-    voronoi = voronoi_from_pixels(pixels = frame, dimensions = (WIDTH, HEIGHT), pixelsOfInterest = randomPixelIndexes)
-    # voronoi_from_pixel_subset(world_state.video_frames[0].pixels, (WIDTH,HEIGHT), ramdom_pixels)
-    #cmap = Image.frombytes('RGB', (WIDTH, HEIGHT), bytes(world_state.video_frames[0].pixels))
-
-    #open_cv_image = np.array(cmap)
-    # Convert RGB to BGR
-
-    #open_cv_image = open_cv_image[:,:,::-1].copy()
-    cv2.imshow('My Image', voronoi)
-    cv2.waitKey(0)
-    #cmap.show()
-
-    #rgb = getRGBPixelFromFrame(frame, int(1), int(1))
-
-    print("Obs")
-    print(msg)
-    observations = json.loads(msg)  # and parse the JSON
-    grid = observations.get(u'floor3x3', 0)  # and get the grid we asked for
-    yaw = observations.get(u'Yaw', 0)
-    """
-    The observation returns includes yaw value. That (the direction it is facing) combined with the grid value 
-    can be uesd to determine if the agent is at a wall. ie. if the grid contains non air values, you know it's up 
-    against a wall. Then you can use the direction (yaw) to determine if it is facing a wall. 
-    """
     print()
-    print("Grid:")
-    print(grid)
+    print("Mission running ", end=' ')
 
-print()
-print("Mission ended")
-# Mission has ended.
+  def start(self):
+    self.start_agent_host()
+
+    actionCount = 0
+
+
+    # Loop until mission ends:
+    while self.world_state.is_mission_running:
+      actionCount += 1
+      print(".", end="")
+
+      self.world_state = self.agent_host.getWorldState()
+      action = self.behaviorPolicy.randomPolicy(self.world_state)
+      print("Action (" + str(actionCount) + "):" + str(action))
+
+      self.agent_host.sendCommand(action)
+
+      time.sleep(1.1)
+      for error in self.world_state.errors:
+        print("Error:", error.text)
+      if self.world_state.number_of_observations_since_last_state > 0:  # Have any observations come in?
+
+        msg = self.world_state.observations[0].text  # Yes, so get the text
+
+        frame = self.world_state.video_frames[0].pixels
+        voronoi = voronoi_from_pixels(pixels = frame, dimensions = (WIDTH, HEIGHT), pixelsOfInterest = self.stateRepresentation.pointsOfInterest)
+        # voronoi_from_pixel_subset(self.world_state.video_frames[0].pixels, (WIDTH,HEIGHT), ramdom_pixels)
+        #cmap = Image.frombytes('RGB', (WIDTH, HEIGHT), bytes(self.world_state.video_frames[0].pixels))
+
+        #open_cv_image = np.array(cmap)
+        # Convert RGB to BGR
+
+        #open_cv_image = open_cv_image[:,:,::-1].copy()
+        cv2.imshow('My Image', voronoi)
+        cv2.waitKey(0)
+        #cmap.show()
+
+        #rgb = getRGBPixelFromFrame(frame, int(1), int(1))
+
+        print("Obs")
+        print(msg)
+        observations = json.loads(msg)  # and parse the JSON
+        grid = observations.get(u'floor3x3', 0)  # and get the grid we asked for
+        yaw = observations.get(u'Yaw', 0)
+        """
+        The observation returns includes yaw value. That (the direction it is facing) combined with the grid value 
+        can be uesd to determine if the agent is at a wall. ie. if the grid contains non air values, you know it's up 
+        against a wall. Then you can use the direction (yaw) to determine if it is facing a wall. 
+        """
+        print()
+        print("Grid:")
+        print(grid)
+
+    print()
+    print("Mission ended")
+    # Mission has ended.
+
+fg = Foreground()
+fg.start()
