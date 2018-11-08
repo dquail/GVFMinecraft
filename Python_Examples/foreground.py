@@ -107,13 +107,16 @@ class Foreground:
       actionCount += 1
       print(".", end="")
 
-      self.world_state = self.agent_host.getWorldState()
-      action = self.behaviorPolicy.randomPolicy(self.world_state)
-      print("Action (" + str(actionCount) + "):" + str(action))
+      #self.world_state = self.agent_host.getWorldState()
+      #action = self.behaviorPolicy.randomPolicy(self.world_state)
+      #action = self.behaviorPolicy.turnLeftPolicy(self.world_state)
+      action = self.behaviorPolicy.moveForwardPolicy(self.world_state)
 
       self.agent_host.sendCommand(action)
+      #We need to give the simulator a bit of time to process the action and update it's state
+      time.sleep(0.1)
 
-      time.sleep(1.1)
+      self.world_state = self.agent_host.getWorldState()
       for error in self.world_state.errors:
         print("Error:", error.text)
       if self.world_state.number_of_observations_since_last_state > 0:  # Have any observations come in?
@@ -123,7 +126,7 @@ class Foreground:
         frame = self.world_state.video_frames[0].pixels
         voronoi = voronoi_from_pixels(pixels = frame, dimensions = (WIDTH, HEIGHT), pixelsOfInterest = self.stateRepresentation.pointsOfInterest)
         self.display.updateImage(voronoi)
-
+        time.sleep(1.0)
         #cv2.imshow('My Image', voronoi)
         #cv2.waitKey(0)
 
