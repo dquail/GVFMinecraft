@@ -22,7 +22,7 @@ pixelsOfInterest: tuple of format (x, y values . These are the sampled pixels/va
 based off of
 dimensions: tuple (width, height) of desired image.
 Output:
-The voronoi image 
+The cv2 formatted voronoi image 
 """
 def voronoi_from_pixels(pixels, dimensions, pixelsOfInterest):
 
@@ -62,9 +62,9 @@ def voronoi_from_pixels(pixels, dimensions, pixelsOfInterest):
 
   # Show results
 
-  cv2.imshow("Vornoi Image", img_voronoi)
+  #cv2.imshow("Vornoi Image", img_voronoi)
 
-  cv2.waitKey(0)
+  #cv2.waitKey(0)
 
   print("done")
   return img_voronoi

@@ -33,6 +33,7 @@ from constants import *
 from StateRepresentation import *
 from simpleMission import *
 from BehaviorPolicy import *
+from display import *
 
 from PIL import ImageTk
 from PIL import Image
@@ -52,6 +53,7 @@ class Foreground:
     self.agent_host.setVideoPolicy(MalmoPython.VideoPolicy.LATEST_FRAME_ONLY)
     self.behaviorPolicy = BehaviorPolicy()
     self.stateRepresentation = StateRepresentation()
+    self.display = Display()
 
   def start_agent_host(self):
     try:
@@ -120,16 +122,10 @@ class Foreground:
 
         frame = self.world_state.video_frames[0].pixels
         voronoi = voronoi_from_pixels(pixels = frame, dimensions = (WIDTH, HEIGHT), pixelsOfInterest = self.stateRepresentation.pointsOfInterest)
-        # voronoi_from_pixel_subset(self.world_state.video_frames[0].pixels, (WIDTH,HEIGHT), ramdom_pixels)
-        #cmap = Image.frombytes('RGB', (WIDTH, HEIGHT), bytes(self.world_state.video_frames[0].pixels))
+        self.display.updateImage(voronoi)
 
-        #open_cv_image = np.array(cmap)
-        # Convert RGB to BGR
-
-        #open_cv_image = open_cv_image[:,:,::-1].copy()
-        cv2.imshow('My Image', voronoi)
-        cv2.waitKey(0)
-        #cmap.show()
+        #cv2.imshow('My Image', voronoi)
+        #cv2.waitKey(0)
 
         #rgb = getRGBPixelFromFrame(frame, int(1), int(1))
 
