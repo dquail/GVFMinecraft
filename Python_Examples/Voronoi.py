@@ -61,12 +61,13 @@ def voronoi_from_pixels(pixels, dimensions, pixelsOfInterest):
     cv2.polylines(img_voronoi, ifacets, True, (0, 0, 0), 1, cv2.LINE_AA, 0)
 
   # Show results
-
+  #For debugging - can show now
   #cv2.imshow("Vornoi Image", img_voronoi)
-
   #cv2.waitKey(0)
 
   print("done")
+  s = img_voronoi.shape
+  l = len(img_voronoi)
   return img_voronoi
 
 # Draw voronoi diagram

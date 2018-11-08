@@ -20,13 +20,13 @@ class Display(object):
   def __init__(self):
     self.root = Tk()
     self.root.wm_title("GVF Knowledge")
-    self.root_frame = Frame(self.root)
-    self.canvas = Canvas(self.root_frame, borderwidth=0, highlightthickness=0, width=WIDTH, height=HEIGHT, bg="black")
-    self.canvas.config(width=WIDTH, height=HEIGHT)
-    self.canvas.pack(padx=5, pady=5)
-    self.image_handle = None
-    self.root_frame.pack()
-    #self.reset()
+    #self.root_frame = Frame(self.root)
+    #self.canvas = Canvas(self.root_frame, borderwidth=0, highlightthickness=0, width=WIDTH, height=HEIGHT, bg="black")
+    self.canvas = Canvas(self.root, borderwidth=0, highlightthickness=0, width=WIDTH, height=HEIGHT, bg="black")
+    #self.canvas.config(width=WIDTH, height=HEIGHT)
+    self.canvas.pack(padx=0, pady=0)
+    #self.root_frame.pack()
+    self.reset()
 
 
 
@@ -40,6 +40,7 @@ class Display(object):
 
   def updateImage(self, image):
     #change from BGR to RGB
+    l = len(image)
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     # convert the cv2 images to PIL format...
     self.image = Image.fromarray(image)
@@ -50,7 +51,7 @@ class Display(object):
 
     # And update/create the canvas image:
     if self.image_handle is None:
-      self.image_handle = self.canvas.create_image(0,0,
+      self.image_handle = self.canvas.create_image(WIDTH/2,HEIGHT/2,
                                                image=self.photoImage)
     else:
       self.canvas.itemconfig(self.image_handle, image=self.photoImage)
