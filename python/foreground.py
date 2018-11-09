@@ -34,6 +34,7 @@ from StateRepresentation import *
 from simpleMission import *
 from BehaviorPolicy import *
 from display import *
+from GVF import *
 
 from PIL import ImageTk
 from PIL import Image
@@ -45,6 +46,12 @@ else:
 
   print = functools.partial(print, flush=True)
 
+def didTouchCumulant(phi):
+  return phi[len(phi) - 1]
+
+def didtouchGamma(phi):
+  return 0
+
 class Foreground:
 
   def __init__(self):
@@ -54,6 +61,17 @@ class Foreground:
     self.behaviorPolicy = BehaviorPolicy()
     self.stateRepresentation = StateRepresentation()
     self.display = Display()
+    self.configureGVFs()
+    self.state = False
+    self.oldState = False
+    self.phi = self.stateRepresentation.getEmptyPhi()
+    self.oldPhi = self.stateRepresentation.getEmptyPhi()
+
+  def configureGVFs(self):
+    self.touchGVF = GVF(featureVectorLength = TOTAL_FEATURE_LENGTH, alpha = 0.10 /( NUM_IMAGE_TILINGS * NUMBER_OF_PIXEL_SAMPLES), isOffPolicy=True, name="TouchGVF")
+    self.touchGVF.cumulant = didTouchCumulant
+    self.touchGVF.policy = self.behaviorPolicy.extendHandPolicy
+    self.touchGVF.gamma = didtouchGamma
 
   def start_agent_host(self):
     try:
@@ -85,66 +103,84 @@ class Foreground:
 
     # Loop until mission starts:
     print("Waiting for the mission to start ", end=' ')
-    self.world_state = self.agent_host.getWorldState()
-    while not self.world_state.has_mission_begun:
+    self.state = self.agent_host.getWorldState()
+    while not self.state.has_mission_begun:
       print(".", end="")
       time.sleep(0.1)
-      self.world_state = self.agent_host.getWorldState()
-      for error in self.world_state.errors:
+      self.state = self.agent_host.getWorldState()
+      for error in self.state.errors:
         print("Error:", error.text)
 
     print()
     print("Mission running ", end=' ')
 
+  def learn(self):
+    print("Do learning here")
+    #Get the feature representation for the old and new states
+    self.touchGVF.learn(lastState = self.oldPhi, action = self.action, newState = self.phi)
+
+
+
+  def updateUI(self):
+    #Create a voronoi image
+    frame = self.state.video_frames[0].pixels
+    # rgb = self.stateRepresentation.getRGBPixelFromFrame(frame, int(1), int(1))
+
+    voronoi = voronoi_from_pixels(pixels=frame, dimensions=(WIDTH, HEIGHT),
+                                  pixelsOfInterest=self.stateRepresentation.pointsOfInterest)
+    # cv2.imshow('My Image', voronoi)
+    # cv2.waitKey(0)
+
+    didTouch = self.stateRepresentation.didTouch(previousAction = self.action, currentState = self.oldState)
+
+    touchPrediction = self.touchGVF.prediction(self.phi)
+
+    self.display.update(image=voronoi, numberOfSteps=self.actionCount, currentTouchPrediction=touchPrediction, didTouch=didTouch)
+    #time.sleep(1.0)
+
   def start(self):
     self.start_agent_host()
 
-    actionCount = 0
+    self.actionCount = 0
 
+    self.action = self.behaviorPolicy.ACTIONS['no_action']
 
     # Loop until mission ends:
-    while self.world_state.is_mission_running:
-      actionCount += 1
+    while self.state.is_mission_running:
+      self.actionCount += 1
       print(".", end="")
 
-      #self.world_state = self.agent_host.getWorldState()
-      #action = self.behaviorPolicy.randomPolicy(self.world_state)
-      #action = self.behaviorPolicy.turnLeftPolicy(self.world_state)
-      action = self.behaviorPolicy.moveForwardPolicy(self.world_state)
+      self.oldState = self.state
+      self.oldPhi = self.phi
 
-      self.agent_host.sendCommand(action)
-      #We need to give the simulator a bit of time to process the action and update it's state
+      #Select and send action. Need to sleep to give time for simulator to respond
+      self.action = self.behaviorPolicy.mostlyForwardAndTouchPolicy(self.state)
+      self.agent_host.sendCommand(self.action)
       time.sleep(0.1)
+      self.state = self.agent_host.getWorldState()
+      if self.state.number_of_observations_since_last_state > 0:
+        for error in self.state.errors:
+          print("Error:", error.text)
+        self.phi = self.stateRepresentation.getPhi(state=self.state, previousAction=self.action)
 
-      self.world_state = self.agent_host.getWorldState()
-      for error in self.world_state.errors:
-        print("Error:", error.text)
-      if self.world_state.number_of_observations_since_last_state > 0:  # Have any observations come in?
+        #Do the learning
+        self.learn()
 
-        msg = self.world_state.observations[0].text  # Yes, so get the text
+        #Update our display (for debugging and progress reporting)
+        self.updateUI()
 
-        frame = self.world_state.video_frames[0].pixels
-        voronoi = voronoi_from_pixels(pixels = frame, dimensions = (WIDTH, HEIGHT), pixelsOfInterest = self.stateRepresentation.pointsOfInterest)
-        self.display.updateImage(voronoi)
-        time.sleep(1.0)
-        #cv2.imshow('My Image', voronoi)
-        #cv2.waitKey(0)
 
-        #rgb = getRGBPixelFromFrame(frame, int(1), int(1))
+      #Get new state
 
-        print("Obs")
-        print(msg)
-        observations = json.loads(msg)  # and parse the JSON
-        grid = observations.get(u'floor3x3', 0)  # and get the grid we asked for
-        yaw = observations.get(u'Yaw', 0)
-        """
-        The observation returns includes yaw value. That (the direction it is facing) combined with the grid value 
-        can be uesd to determine if the agent is at a wall. ie. if the grid contains non air values, you know it's up 
-        against a wall. Then you can use the direction (yaw) to determine if it is facing a wall. 
-        """
-        print()
-        print("Grid:")
-        print(grid)
+      """
+      - Choose action
+      - Take action
+      - Get new observe
+      - Make previous observe old
+      - Learn
+      - Update display
+      
+      """
 
     print()
     print("Mission ended")

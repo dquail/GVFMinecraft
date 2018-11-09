@@ -26,6 +26,22 @@ class Display(object):
     #self.canvas.config(width=WIDTH, height=HEIGHT)
     self.canvas.pack(padx=0, pady=0)
     #self.root_frame.pack()
+
+    #Did touch display
+    self.didTouch = StringVar()
+    self.didTouchLabel = Label(self.root, textvariable = self.didTouch, font = 'Helvetica 18 bold')
+    self.didTouchLabel.pack()
+
+    #Touch prediction
+    self.touchPrediction = StringVar()
+    self.touchPredictionLabel = Label(self.root, textvariable = self.touchPrediction)
+    self.touchPredictionLabel.pack(side = "top", anchor = "w")
+
+    #Number of steps
+    self.numberOfSteps = StringVar()
+    self.numberOfStepsLabel = Label(self.root, textvariable = self.numberOfSteps)
+    self.numberOfStepsLabel.pack(side = "top", anchor = "w")
+
     self.reset()
 
 
@@ -38,7 +54,16 @@ class Display(object):
     self.image_handle = None
     self.current_frame = 0
 
-  def updateImage(self, image):
+  def update(self, image, numberOfSteps, currentTouchPrediction, didTouch):
+    #Update labels
+    self.touchPrediction.set("Touch prediction: " + str(currentTouchPrediction))
+    self.numberOfSteps.set("Step: " + str(numberOfSteps))
+    if didTouch:
+      self.didTouch.set("TOUCHED")
+    else:
+      self.didTouch.set("")
+
+    #Update image
     #change from BGR to RGB
     l = len(image)
     image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)

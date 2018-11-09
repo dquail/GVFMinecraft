@@ -9,10 +9,12 @@ from constants import *
 """
 import numpy as np
 from tiles import *
+import json
 import time
+from BehaviorPolicy import *
 
 # image tiles
-NUMBER_OF_PIXEL_SAMPLES
+NUMBER_OF_PIXEL_SAMPLES = 200
 CHANNELS = 4
 NUM_IMAGE_TILINGS = 4
 NUM_IMAGE_INTERVALS = 4
@@ -21,32 +23,25 @@ SCALE_RGB = NUM_IMAGE_INTERVALS / 256.0
 IMAGE_START_INDEX = 0
 
 # constants relating to image size recieved
-IMAGE_HEIGHT = 480  # rows
-IMAGE_WIDTH = 640  # columns
+IMAGE_HEIGHT = HEIGHT  # rows
+IMAGE_WIDTH = WIDTH  # columns
 
 NUMBER_OF_COLOR_CHANNELS = 3 #red, blue, green
 PIXEL_FEATURE_LENGTH = np.power(NUM_IMAGE_INTERVALS, NUMBER_OF_COLOR_CHANNELS) * NUM_IMAGE_TILINGS
-DID_BUMP_FEATURE_LENGTH = 1
-TOTAL_FEATURE_LENGTH = PIXEL_FEATURE_LENGTH * NUMBER_OF_PIXEL_SAMPLES + DID_BUMP_FEATURE_LENGTH
-PIXEL_DISTANCE_CONSIDERED_BUMP = 230 #How close an object is in front of the avatar before it is considered to "bump" into it
+DID_TOUCH_FEATURE_LENGTH = 1
+TOTAL_FEATURE_LENGTH = PIXEL_FEATURE_LENGTH * NUMBER_OF_PIXEL_SAMPLES + DID_TOUCH_FEATURE_LENGTH
+
 # Channels
 RED_CHANNEL = 0
 GREEN_CHANNEL = 1
 BLUE_CHANNEL = 2
 DEPTH_CHANNEL = 3
-OBS_KEY = 'RGBD_INTERLEAVED'
 
 WALL_THRESHOLD = 0.2 #If the prediction is greater than this, the pavlov agent will avert
 
-def getRGBPixelFromFrame(frame, x, y):
-  length = len(frame)
-  r = frame[3 * (x + y * WIDTH)]
-  g = frame[1 + 3 * (x + y * WIDTH)]
-  b = frame[2 + 3 * (x + y * WIDTH)]
-  return (r, g, b)
-
 class StateRepresentation(object):
   def __init__(self):
+    self.behaviorPolicy = BehaviorPolicy()
     self.pointsOfInterest = []
     self.numberOfTimesBumping = 0
     self.randomYs = np.random.choice(HEIGHT, NUMBER_OF_PIXEL_SAMPLES, replace=True)
@@ -56,29 +51,47 @@ class StateRepresentation(object):
       point = self.randomXs[i], self.randomYs[i]
       self.pointsOfInterest.append(point)
 
-  def didBump(self, observation):
-    obs = observation[OBS_KEY]
-    midPix = obs[IMAGE_WIDTH / 2, IMAGE_HEIGHT / 2]
+  def getRGBPixelFromFrame(self, frame, x, y):
+    length = len(frame)
+    r = frame[3 * (x + y * WIDTH)]
+    g = frame[1 + 3 * (x + y * WIDTH)]
+    b = frame[2 + 3 * (x + y * WIDTH)]
+    return (r, g, b)
 
-    didBump = False
-    depths = obs[:,:, DEPTH_CHANNEL]
-    #closestPixel = np.amin(depths)
-    closestPixel = midPix[DEPTH_CHANNEL]
-    #print("Pixel: " + str(closestPixel))
+  def didTouch(self, previousAction, currentState):
+    # Determine if if touch was obtained last time step
+    didTouch = False
+    if previousAction == self.behaviorPolicy.ACTIONS['extend_hand']:
+      msg = currentState.observations[0].text
+      observations = json.loads(msg)  # and parse the JSON
+      grid = observations.get(u'floor3x3', 0)  # and get the grid we asked for
+      yaw = observations.get(u'Yaw', 0)
+      facingIdx = 1
+      if (yaw == 0.0):
+        # Facing south
+        facingIdx = 7
+      elif (yaw == 90.0):
+        # Facing west
+        facingIdx = 3
+      elif (yaw == 180.0):
+        # Facing north
+        facingIdx = 1
+      elif (yaw == -90):
+        # Facing east
+        facingIdx = 5
+      if not grid[facingIdx] == "air":
+        didTouch = True
+      """
+      print()
+      print("Grid:")
+      print(grid)
+      """
 
-    if  closestPixel < PIXEL_DISTANCE_CONSIDERED_BUMP:
-      self.numberOfTimesBumping +=1
-      didBump = True
-
-    """
-    if didBump:
-      print("!!!!! BUMPED " + str(self.numberOfTimesBumping) + " time !!!!!")
-      time.sleep(1.0)
-    """
-    return didBump
+    return didTouch
 
   def getEmptyPhi(self):
     return np.zeros(TOTAL_FEATURE_LENGTH)
+
   """
   Name: getPhi
   Description: Creates the feature representation (phi) for a given observation. The representation
@@ -88,11 +101,11 @@ class StateRepresentation(object):
   Input: the observation. This is the full pixel rgbd values for each of the IMAGE_WIDTH X IMAGE_HEIGHT pixels in view
   Output: The feature vector
   """
-  def getPhi(self, observation):
-    if not observation:
+  def getPhi(self, state, previousAction):
+    if not state:
       return None
-    rgbdObs = observation[OBS_KEY]
-    #tilecode each pixel indivudually and then assemble
+
+    frame = state.video_frames[0].pixels
 
     phi = []
 
@@ -100,9 +113,10 @@ class StateRepresentation(object):
       #Get the pixel value at that point
       x = point[0]
       y = point[1]
-      red = rgbdObs[y, x, RED_CHANNEL] / 256.0
-      green = rgbdObs[y, x, GREEN_CHANNEL] / 256.0
-      blue = rgbdObs[y, x, BLUE_CHANNEL] / 256.0
+      red, green, blue = self.getRGBPixelFromFrame(frame, x, y)
+      red = red / 256.0
+      green = green / 256.0
+      blue = blue / 256.0
 
       pixelRep = np.zeros(PIXEL_FEATURE_LENGTH)
       #Tile code these 3 values together
@@ -113,8 +127,8 @@ class StateRepresentation(object):
       #Assemble with other pixels
       phi.extend(pixelRep)
 
-    didBump = self.didBump(observation)
-    phi.append(int(didBump))
+    didTouch = self.didTouch(previousAction = previousAction, currentState = state)
+    phi.append(int(didTouch))
 
     return np.array(phi)
 

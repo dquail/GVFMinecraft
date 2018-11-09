@@ -10,6 +10,7 @@ from PIL import Image
 from constants import *
 from StateRepresentation import *
 
+stateRepresentation = StateRepresentation()
 """
 Description:
 This function creates a voronoi image representation of the supplied image, using only the information at the provided
@@ -52,7 +53,7 @@ def voronoi_from_pixels(pixels, dimensions, pixelsOfInterest):
     y = int(p[1])
     x = int(p[0])
 
-    rgb = getRGBPixelFromFrame(pixels, x, y)
+    rgb = stateRepresentation.getRGBPixelFromFrame(pixels, x, y)
     #Get BGR color
     color = [rgb[2], rgb[1], rgb[0]]
 

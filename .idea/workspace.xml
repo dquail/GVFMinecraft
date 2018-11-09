@@ -2,15 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3093333f-ac19-4763-9786-9edf311eb79b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Minecraft/.gradle/gradle.log" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/.gradle/gradle.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Python_Examples/StateRepresentation.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Python_Examples/Voronoi.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Python_Examples/constants.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Python_Examples/display.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Python_Examples/foreground.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Python_Examples/simpleMission.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Python_Examples/tiles.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/BehaviorPolicy.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/BehaviorPolicy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/StateRepresentation.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/StateRepresentation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/Voronoi.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/Voronoi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/constants.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/display.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/display.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python/foreground.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/foreground.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,23 +21,24 @@
     <session id="793727289">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.open.time.11" value="1" />
+          <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.18" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="8" />
+          <entry key="project.opened" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="gitignore" value="2" />
           <entry key="png" value="1" />
-          <entry key="py" value="54" />
+          <entry key="py" value="60" />
           <entry key="txt" value="1" />
           <entry key="xml" value="3" />
         </counts>
@@ -47,7 +47,7 @@
         <counts>
           <entry key="Image" value="1" />
           <entry key="PLAIN_TEXT" value="3" />
-          <entry key="Python" value="54" />
+          <entry key="Python" value="60" />
           <entry key="XML" value="3" />
         </counts>
       </usages-collector>
@@ -55,14 +55,14 @@
         <counts>
           <entry key="dummy" value="11" />
           <entry key="gitignore" value="45" />
-          <entry key="py" value="8513" />
+          <entry key="py" value="13540" />
           <entry key="txt" value="224" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="PLAIN_TEXT" value="280" />
-          <entry key="Python" value="8513" />
+          <entry key="Python" value="13540" />
         </counts>
       </usages-collector>
     </session>
@@ -72,17 +72,85 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/python/foreground.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="34" selection-start-line="34" selection-end-line="34" />
+            <state relative-caret-position="211">
+              <caret line="119" selection-start-line="119" selection-end-line="119" />
+              <folding>
+                <element signature="e#0#37#0" expanded="true" />
+                <marker date="1541797453374" expanded="true" signature="2615:2934" ph="..." />
+                <marker date="1541797453374" expanded="true" signature="2961:2966" ph="..." />
+                <marker date="1541797453374" expanded="true" signature="4370:4375" ph="..." />
+                <marker date="1541797453374" expanded="true" signature="5095:5100" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/python/Voronoi.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="273">
+              <caret line="39" selection-start-line="39" selection-end-line="39" />
+              <folding>
+                <element signature="e#19#29#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/python/StateRepresentation.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-44">
+              <caret line="82" selection-start-line="82" selection-end-line="82" />
+              <folding>
+                <marker date="1541797039889" expanded="true" signature="901:902" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/python/GVF.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="181">
+              <caret line="159" selection-start-line="159" selection-end-line="159" />
+              <folding>
+                <element signature="e#0#12#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/python/constants.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" selection-start-line="2" selection-end-line="2" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+        <entry file="file://$PROJECT_DIR$/python/BehaviorPolicy.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="5" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
+            <state relative-caret-position="375">
+              <caret line="37" column="19" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="19" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+                <marker date="1541797875023" expanded="true" signature="1040:1083" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/python/display.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="213">
+              <caret line="67" selection-start-line="67" selection-end-line="67" />
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -91,18 +159,10 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>draw_point</find>
-      <find>img</find>
-      <find>convert</find>
-      <find>Convert</find>
-      <find>height</find>
-      <find>240</find>
-      <find>Con</find>
       <find>rect =</find>
       <find>dtype</find>
       <find>getRandom</find>
       <find>originalP</find>
-      <find>getRGB</find>
       <find>agent_host</find>
       <find>NUM_RANDOM_POINTS</find>
       <find>print</find>
@@ -111,7 +171,6 @@
       <find>320</find>
       <find>draw_helper</find>
       <find>points_color</find>
-      <find>world_state</find>
       <find>create_image</find>
       <find>create_ima</find>
       <find>image_han</find>
@@ -121,6 +180,15 @@
       <find>random</find>
       <find>root_frame</find>
       <find>sleep</find>
+      <find>.update</find>
+      <find>touchPre</find>
+      <find>getRGB</find>
+      <find>frame =</find>
+      <find>oldState</find>
+      <find>world_state</find>
+      <find>prediction</find>
+      <find>DID_BUMP_FEATURE_LENGTH</find>
+      <find>mostl</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/Python_Examples</dir>
@@ -150,12 +218,18 @@
         <option value="$PROJECT_DIR$/Python_Examples/simpleMission.py" />
         <option value="$PROJECT_DIR$/Python_Examples/foreground.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/python/display.py" />
+        <option value="$PROJECT_DIR$/python/constants.py" />
+        <option value="$PROJECT_DIR$/python/Voronoi.py" />
+        <option value="$PROJECT_DIR$/python/StateRepresentation.py" />
+        <option value="$PROJECT_DIR$/python/foreground.py" />
+        <option value="$PROJECT_DIR$/python/GVF.py" />
+        <option value="$PROJECT_DIR$/python/BehaviorPolicy.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="2334" />
-    <option name="y" value="44" />
+    <option name="x" value="2139" />
     <option name="width" value="1506" />
     <option name="height" value="986" />
   </component>
@@ -204,7 +278,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.foreground (1)">
+  <component name="RunManager" selected="Python.foreground">
     <configuration name="Python 3.6" type="PythonConfigurationType" factoryName="Python">
       <module name="GVFMinecraft" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -247,7 +321,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="foreground (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="foreground" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="GVFMinecraft" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -260,27 +334,6 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python/foreground.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="foreground" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="GVFMinecraft" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="/usr/bin/python3.6" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Python_Examples" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Python_Examples/foreground.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -336,11 +389,9 @@
       <item itemvalue="Python.voronoi" />
       <item itemvalue="Python.tkinter" />
       <item itemvalue="Python.foreground" />
-      <item itemvalue="Python.foreground (1)" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.foreground (1)" />
         <item itemvalue="Python.foreground" />
         <item itemvalue="Python.tkinter" />
         <item itemvalue="Python.voronoi" />
@@ -361,16 +412,16 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="2334" y="44" width="1506" height="986" extended-state="0" />
+    <frame x="2139" y="0" width="1506" height="986" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2366824" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6944" visible="true" weight="0.2366824" />
+      <window_info id="Structure" order="1" sideWeight="0.3056" side_tool="true" visible="true" weight="0.2366824" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32943925" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.47079438" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.26985982" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -447,17 +498,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/readme.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/install_linux.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Python_Examples/use_file.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-315" />
@@ -657,13 +697,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Python_Examples/tiles.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="57" column="63" selection-start-line="57" selection-start-column="63" selection-end-line="57" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Python_Examples/tiles.py" />
     <entry file="file://$PROJECT_DIR$/Python_Examples/voron.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
@@ -681,13 +715,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Python_Examples/StateRepresentation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Python_Examples/StateRepresentation.py" />
     <entry file="file:///usr/lib/python3.6/tkinter/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="123">
@@ -699,9 +727,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="117">
           <caret line="234" column="10" selection-start-line="234" selection-start-column="6" selection-end-line="234" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -715,59 +740,15 @@
     <entry file="file://$PROJECT_DIR$/Python_Examples/voronoi.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/Python_Examples/Voronoi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="68" selection-start-line="68" selection-end-line="68" />
-          <folding>
-            <element signature="e#19#29#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Python_Examples/constants.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="27" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Python_Examples/simpleMission.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="29" column="51" selection-start-line="29" selection-start-column="51" selection-end-line="29" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Python_Examples/foreground.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="116" column="20" selection-start-line="116" selection-start-column="20" selection-end-line="116" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Python_Examples/display.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="39" selection-start-line="39" selection-end-line="39" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Python_Examples/Voronoi.py" />
+    <entry file="file://$PROJECT_DIR$/Python_Examples/constants.py" />
+    <entry file="file://$PROJECT_DIR$/Python_Examples/simpleMission.py" />
+    <entry file="file://$PROJECT_DIR$/Python_Examples/foreground.py" />
+    <entry file="file://$PROJECT_DIR$/Python_Examples/display.py" />
     <entry file="file://$PROJECT_DIR$/Python_Examples/BehaviorPolicy.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="435">
           <caret line="29" selection-start-line="29" selection-end-line="29" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-            <marker date="1541626624808" expanded="true" signature="83:86" ph="..." />
-            <marker date="1541626624808" expanded="true" signature="313:318" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -778,17 +759,82 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/python/foreground.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="5" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python/display.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="67" selection-start-line="67" selection-end-line="67" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python/constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python/Voronoi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
+          <folding>
+            <element signature="e#19#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python/GVF.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="159" selection-start-line="159" selection-end-line="159" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python/StateRepresentation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-44">
+          <caret line="82" selection-start-line="82" selection-end-line="82" />
+          <folding>
+            <marker date="1541797039889" expanded="true" signature="901:902" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python/foreground.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="119" selection-start-line="119" selection-end-line="119" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+            <marker date="1541797453374" expanded="true" signature="2615:2934" ph="..." />
+            <marker date="1541797453374" expanded="true" signature="2961:2966" ph="..." />
+            <marker date="1541797453374" expanded="true" signature="4370:4375" ph="..." />
+            <marker date="1541797453374" expanded="true" signature="5095:5100" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python/BehaviorPolicy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="37" column="19" selection-start-line="37" selection-start-column="19" selection-end-line="37" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+            <marker date="1541797875023" expanded="true" signature="1040:1083" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
