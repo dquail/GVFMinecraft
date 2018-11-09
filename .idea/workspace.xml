@@ -2,15 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3093333f-ac19-4763-9786-9edf311eb79b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/run/logs/fml-client-latest.log" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/run/logs/fml-client-latest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_33925a53-0218-44d9-bba0-5497acb2d0c7/DIM-1/data/villages_nether.dat" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_33925a53-0218-44d9-bba0-5497acb2d0c7/DIM-1/data/villages_nether.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_33925a53-0218-44d9-bba0-5497acb2d0c7/DIM1/data/villages_end.dat" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_33925a53-0218-44d9-bba0-5497acb2d0c7/DIM1/data/villages_end.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_33925a53-0218-44d9-bba0-5497acb2d0c7/data/villages.dat" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_33925a53-0218-44d9-bba0-5497acb2d0c7/data/villages.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_33925a53-0218-44d9-bba0-5497acb2d0c7/level.dat" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_33925a53-0218-44d9-bba0-5497acb2d0c7/level.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_33925a53-0218-44d9-bba0-5497acb2d0c7/level.dat_old" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_33925a53-0218-44d9-bba0-5497acb2d0c7/level.dat_old" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_33925a53-0218-44d9-bba0-5497acb2d0c7/stats/aba0b364-d94f-3398-8c65-0c1c537c40ee.json" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_33925a53-0218-44d9-bba0-5497acb2d0c7/stats/aba0b364-d94f-3398-8c65-0c1c537c40ee.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Minecraft/.gradle/gradle.log" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/.gradle/gradle.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python_Examples/StateRepresentation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python_Examples/Voronoi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python_Examples/constants.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python_Examples/display.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python_Examples/foreground.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python_Examples/simpleMission.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Python_Examples/tiles.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,9 +36,9 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="gitignore" value="1" />
+          <entry key="gitignore" value="2" />
           <entry key="png" value="1" />
-          <entry key="py" value="52" />
+          <entry key="py" value="54" />
           <entry key="txt" value="1" />
           <entry key="xml" value="3" />
         </counts>
@@ -46,22 +46,22 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Image" value="1" />
-          <entry key="PLAIN_TEXT" value="2" />
-          <entry key="Python" value="52" />
+          <entry key="PLAIN_TEXT" value="3" />
+          <entry key="Python" value="54" />
           <entry key="XML" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="11" />
-          <entry key="gitignore" value="39" />
+          <entry key="gitignore" value="45" />
           <entry key="py" value="8513" />
           <entry key="txt" value="224" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="274" />
+          <entry key="PLAIN_TEXT" value="280" />
           <entry key="Python" value="8513" />
         </counts>
       </usages-collector>
@@ -70,16 +70,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Python_Examples/foreground.py">
+        <entry file="file://$PROJECT_DIR$/python/foreground.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
-              <caret line="116" column="20" selection-start-line="116" selection-start-column="20" selection-end-line="116" selection-end-column="20" />
-              <folding>
-                <element signature="e#0#37#0" expanded="true" />
-                <marker date="1541721020436" expanded="true" signature="1946:1951" ph="..." />
-                <marker date="1541721020436" expanded="true" signature="2324:3531" ph="..." />
-                <marker date="1541721020436" expanded="true" signature="3547:3548" ph="..." />
-              </folding>
+            <state relative-caret-position="133">
+              <caret line="34" selection-start-line="34" selection-end-line="34" />
             </state>
           </provider>
         </entry>
@@ -87,75 +81,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" selection-start-line="1" selection-end-line="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Python_Examples/BehaviorPolicy.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="29" selection-start-line="29" selection-end-line="29" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-                <marker date="1541626624808" expanded="true" signature="83:86" ph="..." />
-                <marker date="1541626624808" expanded="true" signature="313:318" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Python_Examples/simpleMission.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="29" column="51" selection-start-line="29" selection-start-column="51" selection-end-line="29" selection-end-column="51" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Python_Examples/display.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="39" selection-start-line="39" selection-end-line="39" />
-              <folding>
-                <element signature="e#0#23#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Python_Examples/StateRepresentation.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Python_Examples/constants.py">
-          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="30">
-              <caret line="2" column="27" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Python_Examples/Voronoi.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="68" selection-start-line="68" selection-end-line="68" />
-              <folding>
-                <element signature="e#19#29#0" expanded="true" />
-                <marker date="1541713775255" expanded="true" signature="725:1900" ph="..." />
-                <marker date="1541713775255" expanded="true" signature="1524:1525" ph="..." />
-              </folding>
+              <caret line="2" column="5" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -191,8 +118,8 @@
       <find>main</find>
       <find>.shape</find>
       <find>current_</find>
-      <find>root_frame</find>
       <find>random</find>
+      <find>root_frame</find>
       <find>sleep</find>
     </findStrings>
     <dirStrings>
@@ -227,7 +154,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="2332" />
+    <option name="x" value="2334" />
+    <option name="y" value="44" />
     <option name="width" value="1506" />
     <option name="height" value="986" />
   </component>
@@ -248,6 +176,11 @@
               <item name="GVFMinecraft" type="b2602c69:ProjectViewProjectNode" />
               <item name="GVFMinecraft" type="462c0819:PsiDirectoryNode" />
               <item name="Minecraft" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="GVFMinecraft" type="b2602c69:ProjectViewProjectNode" />
+              <item name="GVFMinecraft" type="462c0819:PsiDirectoryNode" />
+              <item name="python" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -271,7 +204,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.foreground">
+  <component name="RunManager" selected="Python.foreground (1)">
     <configuration name="Python 3.6" type="PythonConfigurationType" factoryName="Python">
       <module name="GVFMinecraft" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -306,6 +239,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="foreground (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="GVFMinecraft" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="/usr/bin/python3.6" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/python" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/python/foreground.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -382,9 +336,11 @@
       <item itemvalue="Python.voronoi" />
       <item itemvalue="Python.tkinter" />
       <item itemvalue="Python.foreground" />
+      <item itemvalue="Python.foreground (1)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.foreground (1)" />
         <item itemvalue="Python.foreground" />
         <item itemvalue="Python.tkinter" />
         <item itemvalue="Python.voronoi" />
@@ -405,7 +361,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="2332" y="0" width="1506" height="986" extended-state="0" />
+    <frame x="2334" y="44" width="1506" height="986" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2366824" />
@@ -413,8 +369,8 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32943925" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.47079438" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32943925" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.47079438" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -765,18 +721,6 @@
           <caret line="68" selection-start-line="68" selection-end-line="68" />
           <folding>
             <element signature="e#19#29#0" expanded="true" />
-            <marker date="1541713775255" expanded="true" signature="725:1900" ph="..." />
-            <marker date="1541713775255" expanded="true" signature="1524:1525" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Python_Examples/display.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="39" selection-start-line="39" selection-end-line="39" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -785,18 +729,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
           <caret line="2" column="27" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Python_Examples/BehaviorPolicy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-            <marker date="1541626624808" expanded="true" signature="83:86" ph="..." />
-            <marker date="1541626624808" expanded="true" signature="313:318" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -813,17 +745,50 @@
           <caret line="116" column="20" selection-start-line="116" selection-start-column="20" selection-end-line="116" selection-end-column="20" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
-            <marker date="1541721020436" expanded="true" signature="1946:1951" ph="..." />
-            <marker date="1541721020436" expanded="true" signature="2324:3531" ph="..." />
-            <marker date="1541721020436" expanded="true" signature="3547:3548" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Python_Examples/display.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="39" selection-start-line="39" selection-end-line="39" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Python_Examples/BehaviorPolicy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" selection-start-line="29" selection-end-line="29" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+            <marker date="1541626624808" expanded="true" signature="83:86" ph="..." />
+            <marker date="1541626624808" expanded="true" signature="313:318" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python3.6/tokenize.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="454" column="22" selection-start-line="454" selection-start-column="22" selection-end-line="454" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python/foreground.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="34" selection-start-line="34" selection-end-line="34" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        <state relative-caret-position="30">
+          <caret line="2" column="5" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
         </state>
       </provider>
     </entry>
