@@ -2,54 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3093333f-ac19-4763-9786-9edf311eb79b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/cache.properties.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/cache.properties.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/fileSnapshots.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/fileSnapshots.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/taskArtifacts.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/taskArtifacts.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/treeSnapshotUsage.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/treeSnapshotUsage.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/treeSnapshots.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/treeSnapshots.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/.gradle/gradle.log" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/.gradle/gradle.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/build/libs/MalmoMod-0.35.6.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/build/libs/MalmoMod-0.35.6.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/run/config/splash.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/run/config/splash.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/run/logs/fml-client-1.log" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/run/logs/fml-client-1.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/run/logs/fml-client-2.log" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/run/logs/fml-client-2.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/run/logs/fml-client-3.log" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/run/logs/fml-client-3.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Minecraft/run/logs/fml-client-latest.log" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/run/logs/fml-client-latest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/run/logs/fml-junk-earlystartup.log" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/run/logs/fml-junk-earlystartup.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/run/logs/latest.log" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/run/logs/latest.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_6ffeaba6-9b07-4ee7-8156-f00b6e1737f0/DIM-1/data/capabilities.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_6ffeaba6-9b07-4ee7-8156-f00b6e1737f0/DIM-1/data/villages_nether.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_6ffeaba6-9b07-4ee7-8156-f00b6e1737f0/DIM-1/forcedchunks.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_6ffeaba6-9b07-4ee7-8156-f00b6e1737f0/DIM1/data/capabilities.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_6ffeaba6-9b07-4ee7-8156-f00b6e1737f0/DIM1/data/villages_end.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_6ffeaba6-9b07-4ee7-8156-f00b6e1737f0/DIM1/forcedchunks.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_6ffeaba6-9b07-4ee7-8156-f00b6e1737f0/data/capabilities.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_6ffeaba6-9b07-4ee7-8156-f00b6e1737f0/data/villages.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_6ffeaba6-9b07-4ee7-8156-f00b6e1737f0/forcedchunks.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_6ffeaba6-9b07-4ee7-8156-f00b6e1737f0/icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_6ffeaba6-9b07-4ee7-8156-f00b6e1737f0/level.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_6ffeaba6-9b07-4ee7-8156-f00b6e1737f0/level.dat_old" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_6ffeaba6-9b07-4ee7-8156-f00b6e1737f0/playerdata/aba0b364-d94f-3398-8c65-0c1c537c40ee.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_6ffeaba6-9b07-4ee7-8156-f00b6e1737f0/region/r.-1.-1.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_6ffeaba6-9b07-4ee7-8156-f00b6e1737f0/region/r.-1.0.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_6ffeaba6-9b07-4ee7-8156-f00b6e1737f0/region/r.-1.1.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_6ffeaba6-9b07-4ee7-8156-f00b6e1737f0/region/r.-2.-1.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_6ffeaba6-9b07-4ee7-8156-f00b6e1737f0/region/r.-2.-2.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_6ffeaba6-9b07-4ee7-8156-f00b6e1737f0/region/r.-2.0.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_6ffeaba6-9b07-4ee7-8156-f00b6e1737f0/region/r.-2.1.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_6ffeaba6-9b07-4ee7-8156-f00b6e1737f0/region/r.-3.-1.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_6ffeaba6-9b07-4ee7-8156-f00b6e1737f0/region/r.-3.-2.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_6ffeaba6-9b07-4ee7-8156-f00b6e1737f0/region/r.-3.0.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_6ffeaba6-9b07-4ee7-8156-f00b6e1737f0/region/r.0.-1.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_6ffeaba6-9b07-4ee7-8156-f00b6e1737f0/region/r.0.0.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_6ffeaba6-9b07-4ee7-8156-f00b6e1737f0/session.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_6ffeaba6-9b07-4ee7-8156-f00b6e1737f0/stats/aba0b364-d94f-3398-8c65-0c1c537c40ee.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/run/usercache.json" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/run/usercache.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Python_Examples/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/Python_Examples/constants.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Python_Examples/foreground.py" beforeDir="false" afterPath="$PROJECT_DIR$/Python_Examples/foreground.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Python_Examples/simpleMission.py" beforeDir="false" afterPath="$PROJECT_DIR$/Python_Examples/simpleMission.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_33925a53-0218-44d9-bba0-5497acb2d0c7/DIM-1/data/villages_nether.dat" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_33925a53-0218-44d9-bba0-5497acb2d0c7/DIM-1/data/villages_nether.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_33925a53-0218-44d9-bba0-5497acb2d0c7/DIM1/data/villages_end.dat" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_33925a53-0218-44d9-bba0-5497acb2d0c7/DIM1/data/villages_end.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_33925a53-0218-44d9-bba0-5497acb2d0c7/data/villages.dat" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_33925a53-0218-44d9-bba0-5497acb2d0c7/data/villages.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_33925a53-0218-44d9-bba0-5497acb2d0c7/level.dat" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_33925a53-0218-44d9-bba0-5497acb2d0c7/level.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_33925a53-0218-44d9-bba0-5497acb2d0c7/level.dat_old" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_33925a53-0218-44d9-bba0-5497acb2d0c7/level.dat_old" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_33925a53-0218-44d9-bba0-5497acb2d0c7/stats/aba0b364-d94f-3398-8c65-0c1c537c40ee.json" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/run/saves/TEMP_10000_33925a53-0218-44d9-bba0-5497acb2d0c7/stats/aba0b364-d94f-3398-8c65-0c1c537c40ee.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -75,6 +36,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
+          <entry key="gitignore" value="1" />
           <entry key="png" value="1" />
           <entry key="py" value="52" />
           <entry key="txt" value="1" />
@@ -84,7 +46,7 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Image" value="1" />
-          <entry key="PLAIN_TEXT" value="1" />
+          <entry key="PLAIN_TEXT" value="2" />
           <entry key="Python" value="52" />
           <entry key="XML" value="3" />
         </counts>
@@ -92,13 +54,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="11" />
+          <entry key="gitignore" value="39" />
           <entry key="py" value="8513" />
           <entry key="txt" value="224" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="235" />
+          <entry key="PLAIN_TEXT" value="274" />
           <entry key="Python" value="8513" />
         </counts>
       </usages-collector>
@@ -106,7 +69,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Python_Examples/foreground.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="164">
@@ -117,6 +80,15 @@
                 <marker date="1541721020436" expanded="true" signature="2324:3531" ph="..." />
                 <marker date="1541721020436" expanded="true" signature="3547:3548" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" selection-start-line="1" selection-end-line="1" />
             </state>
           </provider>
         </entry>
@@ -250,11 +222,12 @@
         <option value="$PROJECT_DIR$/Python_Examples/constants.py" />
         <option value="$PROJECT_DIR$/Python_Examples/simpleMission.py" />
         <option value="$PROJECT_DIR$/Python_Examples/foreground.py" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="2334" />
+    <option name="x" value="2332" />
     <option name="width" value="1506" />
     <option name="height" value="986" />
   </component>
@@ -274,12 +247,7 @@
             <path>
               <item name="GVFMinecraft" type="b2602c69:ProjectViewProjectNode" />
               <item name="GVFMinecraft" type="462c0819:PsiDirectoryNode" />
-              <item name="Python_Examples" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GVFMinecraft" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GVFMinecraft" type="462c0819:PsiDirectoryNode" />
-              <item name="Sample_missions" type="462c0819:PsiDirectoryNode" />
+              <item name="Minecraft" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -437,15 +405,15 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="2334" y="0" width="1506" height="986" extended-state="0" />
+    <frame x="2332" y="0" width="1506" height="986" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2366824" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2366824" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32943925" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32943925" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.47079438" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -849,6 +817,13 @@
             <marker date="1541721020436" expanded="true" signature="2324:3531" ph="..." />
             <marker date="1541721020436" expanded="true" signature="3547:3548" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
