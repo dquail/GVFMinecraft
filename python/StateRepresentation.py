@@ -65,6 +65,12 @@ class StateRepresentation(object):
 
     didTouch = False
 
+    """
+    print()
+    print("Grid:")
+    print(grid)
+    """
+
     if previousAction == self.behaviorPolicy.ACTIONS['extend_hand']:
       msg = currentState.observations[0].text
       #print(msg)
@@ -82,11 +88,12 @@ class StateRepresentation(object):
       elif (yaw == 180.0):
         # Facing north
         facingIdx = 1
-      elif (yaw == -90):
+      elif (yaw == -90 or yaw == 270):
         # Facing east
         facingIdx = 5
       if not grid[facingIdx] == "air":
         didTouch = True
+        
       """
       print()
       print("Grid:")
