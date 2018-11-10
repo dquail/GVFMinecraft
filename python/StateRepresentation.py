@@ -14,7 +14,7 @@ import time
 from BehaviorPolicy import *
 
 # image tiles
-NUMBER_OF_PIXEL_SAMPLES = 200
+NUMBER_OF_PIXEL_SAMPLES = 100
 CHANNELS = 4
 NUM_IMAGE_TILINGS = 4
 NUM_IMAGE_INTERVALS = 4
@@ -60,9 +60,15 @@ class StateRepresentation(object):
 
   def didTouch(self, previousAction, currentState):
     # Determine if if touch was obtained last time step
+    if not len(currentState.observations) > 0:
+      return False
+
     didTouch = False
+
     if previousAction == self.behaviorPolicy.ACTIONS['extend_hand']:
       msg = currentState.observations[0].text
+      #print(msg)
+
       observations = json.loads(msg)  # and parse the JSON
       grid = observations.get(u'floor3x3', 0)  # and get the grid we asked for
       yaw = observations.get(u'Yaw', 0)
@@ -104,7 +110,8 @@ class StateRepresentation(object):
   def getPhi(self, state, previousAction):
     if not state:
       return None
-
+    if len(state.video_frames) < 0:
+      return self.getEmptyPhi()
     frame = state.video_frames[0].pixels
 
     phi = []

@@ -1,5 +1,65 @@
 from constants import *
+
 missionXML = '''<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+            <Mission xmlns="http://ProjectMalmo.microsoft.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+              <About>
+                <Summary>Hello world!</Summary>
+              </About>
+
+              <ServerSection>
+                <ServerInitialConditions>
+                    <Time>
+                        <StartTime>12000</StartTime>
+                        <AllowPassageOfTime>false</AllowPassageOfTime>
+                    </Time>
+                    <Weather>clear</Weather>
+                </ServerInitialConditions>
+                <ServerHandlers>
+                  <FlatWorldGenerator generatorString="3;7,44*49,73,35:1,159:4,95:13,35:13,159:11,95:10,159:14,159:6,35:6,95:6;12;"/>
+                  <DrawingDecorator>
+                    <DrawLine x1="-10" y1="56" z1="10" x2="10" y2="56" z2="10" type = "sand"/>
+                    <DrawLine x1="-10" y1="57" z1="10" x2="10" y2="57" z2="10" type = "coal_block"/>
+
+                    <DrawLine x1="10" y1="56" z1="10" x2="10" y2="56" z2="-10" type = "gold_block"/>
+                    <DrawLine x1="10" y1="57" z1="10" x2="10" y2="57" z2="-10" type = "coal_block"/>
+
+                    <DrawLine x1="10" y1="56" z1="-10" x2="-10" y2="56" z2="-10" type = "brick_block"/>
+                    <DrawLine x1="10" y1="57" z1="-10" x2="-10" y2="57" z2="-10" type = "coal_block"/>
+
+                    <DrawLine x1="-10" y1="56" z1="-10" x2="-10" y2="56" z2="10" type = "diamond_block"/>
+                    <DrawLine x1="-10" y1="57" z1="-10" x2="-10" y2="57" z2="10" type = "coal_block"/>
+
+                  </DrawingDecorator>
+                  
+                  <ServerQuitWhenAnyAgentFinishes/>
+                </ServerHandlers>
+              </ServerSection>
+
+              <AgentSection mode="Survival">
+                <Name>MalmoTutorialBot</Name>
+                <AgentStart>
+                    <Placement x="0.5" y="56" z="0.5" yaw="0"/>
+                </AgentStart>
+                <AgentHandlers>
+                    <VideoProducer want_depth="false">
+                        <Width>''' + str(WIDTH) + '''</Width>
+                        <Height>''' + str(HEIGHT) + '''</Height>
+                    </VideoProducer>
+                    <ObservationFromGrid>
+                        <Grid name="floor3x3">
+                            <min x="-1" y="0" z="-1"/>
+                            <max x="1" y="0" z="1"/>
+                        </Grid>
+                    </ObservationFromGrid>
+                    <ObservationFromFullStats/>
+                    <DiscreteMovementCommands />
+                </AgentHandlers>
+              </AgentSection>
+            </Mission>'''
+
+
+originalMissionXML = '''<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
             <Mission xmlns="http://ProjectMalmo.microsoft.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 
               <About>

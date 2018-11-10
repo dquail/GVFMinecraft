@@ -115,7 +115,6 @@ class Foreground:
     print("Mission running ", end=' ')
 
   def learn(self):
-    print("Do learning here")
     #Get the feature representation for the old and new states
     self.touchGVF.learn(lastState = self.oldPhi, action = self.action, newState = self.phi)
 

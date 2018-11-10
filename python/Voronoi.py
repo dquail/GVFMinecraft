@@ -66,7 +66,6 @@ def voronoi_from_pixels(pixels, dimensions, pixelsOfInterest):
   #cv2.imshow("Vornoi Image", img_voronoi)
   #cv2.waitKey(0)
 
-  print("done")
   s = img_voronoi.shape
   l = len(img_voronoi)
   return img_voronoi

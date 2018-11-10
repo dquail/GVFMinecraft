@@ -12,7 +12,7 @@ class BehaviorPolicy:
       'forward': "move 1",
       'back': "move -1",
       'turn_left': "turn 1",
-      'extend_hand':"attack 1",
+      'extend_hand':"move_0",
       'no_action': "move 0"
     }
 
@@ -26,6 +26,13 @@ class BehaviorPolicy:
     else:
       return self.ACTIONS['forward']
 
+  def forwardThenLeftPolicy(self,state):
+    self.i+=1
+    if self.i%20 == 0:
+      return self.turnLeftPolicy(state)
+    else:
+      return self.moveForwardPolicy(state)
+
   def mostlyForwardPolicy(self,state):
     self.i+=1
     if self.i %5 == 0:
@@ -35,7 +42,9 @@ class BehaviorPolicy:
 
   def mostlyForwardAndTouchPolicy(self, state):
     self.i +=1
-    if self.i % 200 == 0:
+    if self.i % 5 == 0:
+      return self.randomPolicy(state)
+    if self.i % 50 == 0:
       return self.ACTIONS['turn_left']
     elif self.i %2 ==0:
       return self.ACTIONS['extend_hand']
