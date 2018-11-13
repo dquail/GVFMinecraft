@@ -32,6 +32,7 @@ from Voronoi import *
 from constants import *
 from StateRepresentation import *
 from simpleMission import *
+import peakAtState as peak
 from BehaviorPolicy import *
 from display import *
 from GVF import *
@@ -49,6 +50,7 @@ else:
 def didTouchCumulant(phi):
   return phi[len(phi) - 1]
 
+
 def didtouchGamma(phi):
   return 0
 
@@ -61,17 +63,35 @@ class Foreground:
     self.behaviorPolicy = BehaviorPolicy()
     self.stateRepresentation = StateRepresentation()
     self.display = Display()
+    self.gvfs = {}
     self.configureGVFs()
     self.state = False
     self.oldState = False
     self.phi = self.stateRepresentation.getEmptyPhi()
     self.oldPhi = self.stateRepresentation.getEmptyPhi()
 
+
+
   def configureGVFs(self):
-    self.touchGVF = GVF(featureVectorLength = TOTAL_FEATURE_LENGTH, alpha = 0.10 /( NUM_IMAGE_TILINGS * NUMBER_OF_PIXEL_SAMPLES), isOffPolicy=True, name="TouchGVF")
-    self.touchGVF.cumulant = didTouchCumulant
-    self.touchGVF.policy = self.behaviorPolicy.extendHandPolicy
-    self.touchGVF.gamma = didtouchGamma
+    touchGVF = GVF(featureVectorLength = TOTAL_FEATURE_LENGTH, alpha = 0.10 /( NUM_IMAGE_TILINGS * NUMBER_OF_PIXEL_SAMPLES), isOffPolicy=True, name="T")
+    touchGVF.cumulant = didTouchCumulant
+    touchGVF.policy = self.behaviorPolicy.extendHandPolicy
+    touchGVF.gamma = didtouchGamma
+    self.gvfs[touchGVF.name] = touchGVF
+
+    turnLeftGVF = GVF(featureVectorLength=TOTAL_FEATURE_LENGTH,
+                        alpha=0.10 / (NUM_IMAGE_TILINGS * NUMBER_OF_PIXEL_SAMPLES), isOffPolicy=True, name="TL")
+    turnLeftGVF.cumulant = self.gvfs['T'].prediction
+    turnLeftGVF.policy = self.behaviorPolicy.turnLeftPolicy
+    turnLeftGVF.gamma = didtouchGamma
+    self.gvfs[turnLeftGVF.name] = turnLeftGVF
+
+    turnRightGVF = GVF(featureVectorLength=TOTAL_FEATURE_LENGTH,
+                        alpha=0.10 / (NUM_IMAGE_TILINGS * NUMBER_OF_PIXEL_SAMPLES), isOffPolicy=True, name="TR")
+    turnRightGVF.cumulant = self.gvfs['T'].prediction
+    turnRightGVF.policy = self.behaviorPolicy.turnRightPolicy
+    turnRightGVF.gamma = didtouchGamma
+    self.gvfs[turnRightGVF.name] = turnRightGVF
 
   def start_agent_host(self):
     try:
@@ -116,7 +136,9 @@ class Foreground:
 
   def learn(self):
     #Get the feature representation for the old and new states
-    self.touchGVF.learn(lastState = self.oldPhi, action = self.action, newState = self.phi)
+    for name, gvf in self.gvfs.items():
+      gvf.learn(lastState=self.oldPhi, action=self.action, newState=self.phi)
+    #self.touchGVF.learn(lastState = self.oldPhi, action = self.action, newState = self.phi)
 
 
 
@@ -132,9 +154,23 @@ class Foreground:
 
     didTouch = self.stateRepresentation.didTouch(previousAction = self.action, currentState = self.oldState)
 
-    touchPrediction = self.touchGVF.prediction(self.phi)
+    inFront = peak.isWallInFront(self.state)
+    touchPrediction = self.gvfs['T'].prediction(self.phi)
 
-    self.display.update(image=voronoi, numberOfSteps=self.actionCount, currentTouchPrediction=touchPrediction, didTouch=didTouch)
+    onLeft = peak.isWallOnLeft(self.state)
+    turnLeftAndTouchPrediction = self.gvfs['TL'].prediction(self.phi)
+
+    onRight = peak.isWallOnRight(self.state)
+    turnRightAndtouchPrediction = self.gvfs['TR'].prediction(self.phi)
+    self.display.update(image=voronoi,
+                        numberOfSteps=self.actionCount,
+                        currentTouchPrediction=touchPrediction,
+                        wallInFront = inFront,
+                        didTouch=didTouch,
+                        turnLeftAndTouchPrediction = turnLeftAndTouchPrediction,
+                        wallOnLeft = onLeft,
+                        turnRightAndTouchPrediction = turnRightAndtouchPrediction,
+                        wallOnRight = onRight)
     #time.sleep(1.0)
 
   def start(self):

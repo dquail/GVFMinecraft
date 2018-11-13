@@ -37,6 +37,16 @@ class Display(object):
     self.touchPredictionLabel = Label(self.root, textvariable = self.touchPrediction)
     self.touchPredictionLabel.pack(side = "top", anchor = "w")
 
+    #Turn left and touch prediction
+    self.turnLeftAndTouchPrediction = StringVar()
+    self.turnLeftAndTouchPredictionLabel = Label(self.root, textvariable = self.turnLeftAndTouchPrediction)
+    self.turnLeftAndTouchPredictionLabel.pack(side = "top", anchor = "w")
+
+    #Turn right and touch prediction
+    self.turnRightAndTouchPrediction = StringVar()
+    self.turnRightAndTouchPredictionLabel = Label(self.root, textvariable = self.turnRightAndTouchPrediction)
+    self.turnRightAndTouchPredictionLabel.pack(side = "top", anchor = "w")
+
     #Number of steps
     self.numberOfSteps = StringVar()
     self.numberOfStepsLabel = Label(self.root, textvariable = self.numberOfSteps)
@@ -54,9 +64,26 @@ class Display(object):
     self.image_handle = None
     self.current_frame = 0
 
-  def update(self, image, numberOfSteps, currentTouchPrediction, didTouch):
+  def update(self, image, numberOfSteps, currentTouchPrediction, didTouch, turnLeftAndTouchPrediction, wallInFront, wallOnLeft, turnRightAndTouchPrediction, wallOnRight):
     #Update labels
-    self.touchPrediction.set("Touch prediction: " + str(currentTouchPrediction))
+    self.touchPrediction.set("T: " + str(currentTouchPrediction))
+    if wallInFront:
+      self.touchPredictionLabel.config(fg = 'blue')
+    else:
+      self.touchPredictionLabel.config(fg = 'red')
+
+    self.turnLeftAndTouchPrediction.set("TL: " + str(turnLeftAndTouchPrediction))
+    if wallOnLeft:
+      self.turnLeftAndTouchPredictionLabel.config(fg='blue')
+    else:
+      self.turnLeftAndTouchPredictionLabel.config(fg = 'red')
+
+    self.turnRightAndTouchPrediction.set("TR: " + str(turnRightAndTouchPrediction))
+    if wallOnRight:
+      self.turnRightAndTouchPredictionLabel.config(fg='blue')
+    else:
+      self.turnRightAndTouchPredictionLabel.config(fg='red')
+
     self.numberOfSteps.set("Step: " + str(numberOfSteps))
     if didTouch:
       self.didTouch.set("TOUCHED")

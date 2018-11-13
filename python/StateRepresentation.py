@@ -58,6 +58,7 @@ class StateRepresentation(object):
     b = frame[2 + 3 * (x + y * WIDTH)]
     return (r, g, b)
 
+
   def didTouch(self, previousAction, currentState):
     # Determine if if touch was obtained last time step
     if not len(currentState.observations) > 0:
@@ -93,7 +94,7 @@ class StateRepresentation(object):
         facingIdx = 5
       if not grid[facingIdx] == "air":
         didTouch = True
-        
+
       """
       print()
       print("Grid:")
