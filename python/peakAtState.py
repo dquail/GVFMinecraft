@@ -54,6 +54,25 @@ def isWallOnLeft(currentState):
 
   return isBlock
 
+def isWallAdjacent(currentState):
+  msg = currentState.observations[0].text
+  # print(msg)
+
+  observations = json.loads(msg)  # and parse the JSON
+  grid = observations.get(u'floor3x3', 0)  # and get the grid we asked for
+  yaw = observations.get(u'Yaw', 0)
+  isBlock = False
+
+  if not grid[1] == "air":
+    isBlock = True
+  elif not grid[3] == "air":
+    isBlock = True
+  elif not grid[5] == "air":
+    isBlock = True
+  elif not grid[7] == "air":
+    isBlock = True
+
+  return isBlock
 
 def isWallOnRight(currentState):
   msg = currentState.observations[0].text

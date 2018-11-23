@@ -1,12 +1,9 @@
-from constants import *
-
-
 
 #!/usr/bin/env python
 
-"""Uses tilecoding to create state.
 
-"""
+from constants import *
+
 import numpy as np
 from tiles import *
 import json
@@ -40,7 +37,8 @@ DEPTH_CHANNEL = 3
 WALL_THRESHOLD = 0.2 #If the prediction is greater than this, the pavlov agent will avert
 
 class StateRepresentation(object):
-  def __init__(self):
+  def __init__(self, gvfs):
+    self.gvfs = gvfs
     self.behaviorPolicy = BehaviorPolicy()
     self.pointsOfInterest = []
     self.numberOfTimesBumping = 0
@@ -115,7 +113,10 @@ class StateRepresentation(object):
   Input: the observation. This is the full pixel rgbd values for each of the IMAGE_WIDTH X IMAGE_HEIGHT pixels in view
   Output: The feature vector
   """
-  def getPhi(self, state, previousAction):
+  def getPhi(self, previousState, previousAction, state, simplePhi = False, ):
+    if simplePhi:
+      return self.getCheatingPhi(state, previousAction)
+
     if not state:
       return None
     if len(state.video_frames) < 0:
@@ -142,9 +143,52 @@ class StateRepresentation(object):
       #Assemble with other pixels
       phi.extend(pixelRep)
 
+    #Add the values for each of the gvf predictions using the previous state
     didTouch = self.didTouch(previousAction = previousAction, currentState = state)
     phi.append(int(didTouch))
 
     return np.array(phi)
+
+
+  def getCheatingPhi(self, state, previousAction):
+    if not state:
+      return None
+    if len(state.video_frames) < 0:
+      return self.getEmptyPhi()
+
+
+    phi = np.zeros(TOTAL_FEATURE_LENGTH)
+    msg = state.observations[0].text
+
+    observations = json.loads(msg)  # and parse the JSON
+    xPos = observations.get(u'XPos', 0) - 0.5
+    zPos = observations.get(u'ZPos', 0) - 0.5
+    x = int(xPos) + 5
+    z = int(zPos) + 5
+    yaw = observations.get(u'Yaw', 0)
+    didTouch = self.didTouch(previousAction, state)
+
+    idx = int(z) * 10 + x
+
+    if yaw == 0:
+      idx = idx + 100 * 0
+    elif yaw == 90:
+      idx = idx + 100 * 1
+    elif yaw == 180:
+      idx = idx + 100 *2
+    else:
+      idx = idx + 100 * 3
+
+
+    if didTouch:
+      idx = idx + 400
+
+    phi[idx] = 1
+    '''
+    if didTouch:
+      phi[len(phi) - 1] = 1
+    '''
+
+    return phi
 
 

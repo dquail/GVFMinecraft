@@ -47,6 +47,11 @@ class Display(object):
     self.turnRightAndTouchPredictionLabel = Label(self.root, textvariable = self.turnRightAndTouchPrediction)
     self.turnRightAndTouchPredictionLabel.pack(side = "top", anchor = "w")
 
+    #Wall Adjacent prediction
+    self.isWallAdjacentPrediction = StringVar()
+    self.isWallAdjacentPredictionLabel = Label(self.root, textvariable = self.isWallAdjacentPrediction)
+    self.isWallAdjacentPredictionLabel.pack(side = "top", anchor = "w")
+
     #Number of steps
     self.numberOfSteps = StringVar()
     self.numberOfStepsLabel = Label(self.root, textvariable = self.numberOfSteps)
@@ -64,7 +69,17 @@ class Display(object):
     self.image_handle = None
     self.current_frame = 0
 
-  def update(self, image, numberOfSteps, currentTouchPrediction, didTouch, turnLeftAndTouchPrediction, wallInFront, wallOnLeft, turnRightAndTouchPrediction, wallOnRight):
+  def update(self, image,
+             numberOfSteps,
+             currentTouchPrediction,
+             didTouch,
+             turnLeftAndTouchPrediction,
+             wallInFront,
+             wallOnLeft,
+             turnRightAndTouchPrediction,
+             wallOnRight,
+             touchAdjacentPrediction,
+             wallAdjacent):
     #Update labels
     self.touchPrediction.set("T: " + str(currentTouchPrediction))
     if wallInFront:
@@ -83,6 +98,12 @@ class Display(object):
       self.turnRightAndTouchPredictionLabel.config(fg='blue')
     else:
       self.turnRightAndTouchPredictionLabel.config(fg='red')
+
+    self.isWallAdjacentPrediction.set("TA: " + str(touchAdjacentPrediction))
+    if wallAdjacent:
+      self.isWallAdjacentPredictionLabel.config(fg = 'blue')
+    else:
+      self.isWallAdjacentPredictionLabel.config(fg = 'red')
 
     self.numberOfSteps.set("Step: " + str(numberOfSteps))
     if didTouch:

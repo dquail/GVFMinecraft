@@ -10,7 +10,7 @@ from PIL import Image
 from constants import *
 from StateRepresentation import *
 
-stateRepresentation = StateRepresentation()
+stateRepresentation = StateRepresentation(gvfs = None)
 """
 Description:
 This function creates a voronoi image representation of the supplied image, using only the information at the provided

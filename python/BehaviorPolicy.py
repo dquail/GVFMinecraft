@@ -13,8 +13,8 @@ class BehaviorPolicy:
       'back': "move -1",
       'turn_left': "turn -1",
       'turn_right': "turn 1",
-      'extend_hand':"move_0",
-      'no_action': "move 0"
+      'extend_hand':"move 0",
+      'no_action': "jump 0"
     }
 
 
@@ -38,25 +38,37 @@ class BehaviorPolicy:
       return self.moveForwardPolicy(state)
 
   def mostlyForwardPolicy(self,state):
-    self.i+=1
-    if self.i %5 == 0:
+    if self.i %21 == 0:
       return self.randomPolicy(state)
     else:
       return self.moveForwardPolicy(state)
 
+
   def mostlyForwardAndTouchPolicy(self, state):
     self.i += 1
-  
-    if self.i % 10 == 0:
+
+    if self.i % 50 == 0:
+      return self.turnRightPolicy(state)
+    elif (self.i -1) % 50 == 0:
+      return self.turnRightPolicy(state)
+    elif ((self.i -2) %50) == 0:
+      return self.turnRightPolicy(state)
+    elif self.i % 7 == 0:
       return self.randomTurnPolicy(state)
-    elif self.i % 11 == 0:
+    elif self.i % 8 == 0:
       return self.randomTurnPolicy(state)
     elif self.i % 19 ==0:
       return self.randomPolicy(state)
-    elif self.i % 2 == 0:
-      return self.ACTIONS['extend_hand']
+    elif self.i % 21 == 0:
+      return self.mostlyForwardPolicy(state)
+    elif self.i % 23 == 0:
+      return self.mostlyForwardPolicy(state)
     else:
-      return self.moveForwardPolicy(state)
+      if self.i % 2 == 0 and self.i < 30000:
+        return self.ACTIONS['extend_hand']
+      else:
+        return self.mostlyForwardPolicy(state)
+
 
   def extendHandPolicy(self, state):
     return self.ACTIONS['extend_hand']

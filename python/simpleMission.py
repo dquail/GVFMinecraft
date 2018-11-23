@@ -29,6 +29,15 @@ missionXML = '''<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 
                     <DrawLine x1="-5" y1="56" z1="-5" x2="-5" y2="56" z2="5" type = "diamond_block"/>
                     <DrawLine x1="-5" y1="57" z1="-5" x2="-5" y2="57" z2="5" type = "coal_block"/>
+                    
+                    <DrawBlock x="0" y="58" z="5" type = "iron_block"/>
+                    <DrawBlock x="0" y="58" z="-5" type = "iron_block"/>
+                    <DrawBlock x="5" y="58" z="0" type = "iron_block"/>
+                    <DrawBlock x="-5" y="58" z="0" type = "iron_block"/>
+                    <DrawBlock x="0" y="59" z="5" type = "iron_block"/>
+                    <DrawBlock x="0" y="59" z="-5" type = "iron_block"/>
+                    <DrawBlock x="5" y="59" z="0" type = "iron_block"/>
+                    <DrawBlock x="-5" y="59" z="0" type = "iron_block"/>
 
                   </DrawingDecorator>
                   
