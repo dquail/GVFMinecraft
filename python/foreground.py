@@ -59,7 +59,6 @@ def didTouchCumulant(phi):
   else:
     return phi[len(phi) - 1]
 
-
 def didtouchGamma(phi):
   return 0
 
@@ -91,10 +90,11 @@ class Foreground:
     '''
     touchGVF = None
     if simplePhi:
+
       touchGVF = GVF(featureVectorLength=TOTAL_FEATURE_LENGTH, alpha=0.70,
                    isOffPolicy=True, name="T")
     else:
-      touchGVF = GVF(featureVectorLength = TOTAL_FEATURE_LENGTH, alpha = 0.10 /( NUM_IMAGE_TILINGS * NUMBER_OF_PIXEL_SAMPLES), isOffPolicy=True, name="T")
+      touchGVF = GVF(featureVectorLength =TOTAL_FEATURE_LENGTH, alpha = 0.10 /( NUM_IMAGE_TILINGS * NUMBER_OF_PIXEL_SAMPLES), isOffPolicy=True, name="T")
 
     touchGVF.cumulant = didTouchCumulant
     touchGVF.policy = self.behaviorPolicy.extendHandPolicy
@@ -144,7 +144,7 @@ class Foreground:
     def touchAdjacentCumulant(phi):
       touchThreshold = 0.8 #The prediction value before it is considered to be true.
       touchAdjacent = 0.0
-      touchAdjacent = max([touchGVF.prediction(phi), turnLeftGVF.prediction(phi), turnRightGVF.prediction(phi)])
+      touchAdjacent = max([self.gvfs['T'].prediction(phi), self.gvfs['TL'].prediction(phi), self.gvfs['TR'].prediction(phi)])
       if touchAdjacent > 0.8:
         touchAdjacent = 1.0
       else:
@@ -227,6 +227,8 @@ class Foreground:
       previousInFront = peak.isWallInFront(self.oldState)
       previousTouchPrediction = self.gvfs['T'].prediction(self.oldPhi)
 
+      '''
+      #For debugging
       if not previousInFront and previousTouchPrediction > 0.0:
         print("Bad first learning. ")
         print("Last action: " + self.action)
@@ -244,12 +246,13 @@ class Foreground:
         x = observations.get(u'XPos', 0)
         z = observations.get(u'ZPos', 0)
         print("To: " + str(yaw) + ", " + str(x) + ", " + str(z))
-        ph = self.stateRepresentation.getPhi(previousState = self.oldState, state=self.state, previousAction=self.action, simplePhi = USE_SIMPLE_PHI)
+        ph = self.stateRepresentation.getPhi(previousPhi = self.oldPhi, state=self.state, previousAction=self.action, simplePhi = USE_SIMPLE_PHI)
         idx = np.nonzero(ph)[0][0]
         numNonZeros = len(np.nonzero(ph)[0])
         print("idx: " + str(idx) + ", nonZeros: " + str(numNonZeros))
         print("Observations since last:" + str(self.state.number_of_observations_since_last_state))
         print("")
+      '''
       onLeft = peak.isWallOnLeft(self.state)
       turnLeftAndTouchPrediction = self.gvfs['TL'].prediction(self.phi)
 
@@ -279,7 +282,7 @@ class Foreground:
 
     self.actionCount = 0
 
-    self.action = self.behaviorPolicy.ACTIONS['no_action']
+    self.action = self.behaviorPolicy.ACTIONS['extend_hand']
 
     # Loop until mission ends:
     while self.state.is_mission_running:
@@ -292,7 +295,7 @@ class Foreground:
       #Select and send action. Need to sleep to give time for simulator to respond
       self.action = self.behaviorPolicy.mostlyForwardAndTouchPolicy(self.state)
       self.agent_host.sendCommand(self.action)
-      time.sleep(0.2)
+      time.sleep(0.20)
       self.state = self.agent_host.getWorldState()
       if self.state.number_of_observations_since_last_state > 0:
 
@@ -332,7 +335,7 @@ class Foreground:
         for error in self.state.errors:
           print("Error:", error.text)
         # Simple phi
-        self.phi = self.stateRepresentation.getPhi(previousState = self.oldState, state=self.state, previousAction=self.action, simplePhi = USE_SIMPLE_PHI)
+        self.phi = self.stateRepresentation.getPhi(previousPhi = self.oldPhi, state=self.state, previousAction=self.action, simplePhi = USE_SIMPLE_PHI)
 
         #Do the learning
         self.learn()

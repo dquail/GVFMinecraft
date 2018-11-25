@@ -10,13 +10,20 @@ class BehaviorPolicy:
 
     self.ACTIONS = {
       'forward': "move 1",
+      'turn_left': "turn -1",
+      'turn_right': "turn 1",
+      'extend_hand':"move 0"
+    }
+    '''
+    self.ACTIONS = {
+      'forward': "move 1",
       'back': "move -1",
       'turn_left': "turn -1",
       'turn_right': "turn 1",
       'extend_hand':"move 0",
-      'no_action': "jump 0"
+      'no_move': "move 0"
     }
-
+    '''
 
   def policy(self, state):
     self.i = self.i + 1
@@ -66,6 +73,8 @@ class BehaviorPolicy:
     else:
       if self.i % 2 == 0 and self.i < 30000:
         return self.ACTIONS['extend_hand']
+      elif (self.i - 1 ) % 4 == 0:
+        return self.randomPolicy(state)
       else:
         return self.mostlyForwardPolicy(state)
 

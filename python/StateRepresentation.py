@@ -25,8 +25,13 @@ IMAGE_WIDTH = WIDTH  # columns
 
 NUMBER_OF_COLOR_CHANNELS = 3 #red, blue, green
 PIXEL_FEATURE_LENGTH = np.power(NUM_IMAGE_INTERVALS, NUMBER_OF_COLOR_CHANNELS) * NUM_IMAGE_TILINGS
+PREDICTION_FEATURE_LENGTH = 16
 DID_TOUCH_FEATURE_LENGTH = 1
-TOTAL_FEATURE_LENGTH = PIXEL_FEATURE_LENGTH * NUMBER_OF_PIXEL_SAMPLES + DID_TOUCH_FEATURE_LENGTH
+NUMBER_OF_GVFS = 4
+NUMBER_OF_ACTIONS = 4
+NUM_PREDICTION_TILINGS = 4
+#TOTAL_FEATURE_LENGTH =NUMBER_OF_ACTIONS * (PIXEL_FEATURE_LENGTH * NUMBER_OF_PIXEL_SAMPLES + NUMBER_OF_GVFS * PREDICTION_FEATURE_LENGTH) + DID_TOUCH_FEATURE_LENGTH
+TOTAL_FEATURE_LENGTH =PIXEL_FEATURE_LENGTH * NUMBER_OF_PIXEL_SAMPLES + NUMBER_OF_GVFS * PREDICTION_FEATURE_LENGTH * NUMBER_OF_ACTIONS  + DID_TOUCH_FEATURE_LENGTH
 
 # Channels
 RED_CHANNEL = 0
@@ -48,6 +53,7 @@ class StateRepresentation(object):
     for i in range(NUMBER_OF_PIXEL_SAMPLES):
       point = self.randomXs[i], self.randomYs[i]
       self.pointsOfInterest.append(point)
+
 
   def getRGBPixelFromFrame(self, frame, x, y):
     length = len(frame)
@@ -113,7 +119,7 @@ class StateRepresentation(object):
   Input: the observation. This is the full pixel rgbd values for each of the IMAGE_WIDTH X IMAGE_HEIGHT pixels in view
   Output: The feature vector
   """
-  def getPhi(self, previousState, previousAction, state, simplePhi = False, ):
+  def getPhi(self, previousPhi, previousAction, state, simplePhi = False, ):
     if simplePhi:
       return self.getCheatingPhi(state, previousAction)
 
@@ -143,7 +149,18 @@ class StateRepresentation(object):
       #Assemble with other pixels
       phi.extend(pixelRep)
 
-    #Add the values for each of the gvf predictions using the previous state
+    #Add the values for each of the gvf predictions + previous action using the previous state
+    for name, gvf in self.gvfs.items():
+      for key in self.behaviorPolicy.ACTIONS:
+        predictionRep = np.zeros(PREDICTION_FEATURE_LENGTH)
+        if self.behaviorPolicy.ACTIONS[key] == previousAction:
+          prediction = gvf.prediction(previousPhi)
+          indexes = tiles(NUM_PREDICTION_TILINGS, 16, [prediction])
+          for index in indexes:
+            predictionRep[index] = 1.0
+
+        phi.extend(predictionRep)
+
     didTouch = self.didTouch(previousAction = previousAction, currentState = state)
     phi.append(int(didTouch))
 
