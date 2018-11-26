@@ -1,22 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3093333f-ac19-4763-9786-9edf311eb79b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/cache.properties.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/cache.properties.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/fileSnapshots.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/fileSnapshots.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/taskArtifacts.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/taskArtifacts.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/treeSnapshotUsage.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/treeSnapshotUsage.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/treeSnapshots.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/treeSnapshots.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/.gradle/gradle.log" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/.gradle/gradle.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/build/libs/MalmoMod-0.35.6.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/build/libs/MalmoMod-0.35.6.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/BehaviorPolicy.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/BehaviorPolicy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/StateRepresentation.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/StateRepresentation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/constants.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/foreground.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/foreground.py" afterDir="false" />
-    </list>
+    <list default="true" id="3093333f-ac19-4763-9786-9edf311eb79b" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,10 +10,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/python/foreground.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
+            <state relative-caret-position="-1500">
               <caret line="51" column="19" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="19" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
@@ -108,7 +93,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/python/StateRepresentation.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="145">
@@ -210,8 +195,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="2220" />
-    <option name="y" value="13" />
+    <option name="x" value="479" />
+    <option name="y" value="27" />
     <option name="width" value="1441" />
     <option name="height" value="986" />
   </component>
@@ -394,7 +379,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="2220" y="13" width="1441" height="986" extended-state="0" />
+    <frame x="479" y="27" width="1441" height="986" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6933798" visible="true" weight="0.112834975" />
@@ -784,23 +769,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/python/foreground.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="51" column="19" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-            <marker date="1543161602668" expanded="true" signature="1950:1951" ph="..." />
-            <marker date="1543161602668" expanded="true" signature="3022:5869" ph="..." />
-            <marker date="1543161602668" expanded="true" signature="5519:5524" ph="..." />
-            <marker date="1543161602668" expanded="true" signature="5671:5767" ph="..." />
-            <marker date="1543161602668" expanded="true" signature="5896:5901" ph="..." />
-            <marker date="1543161602668" expanded="true" signature="7251:7256" ph="..." />
-            <marker date="1543161602668" expanded="true" signature="10255:10260" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/python/constants.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -816,6 +784,23 @@
             <element signature="e#25#48#0" expanded="true" />
             <marker date="1543161642539" expanded="true" signature="1188:1189" ph="..." />
             <marker date="1543161642539" expanded="true" signature="1892:1896" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python/foreground.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1500">
+          <caret line="51" column="19" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+            <marker date="1543161602668" expanded="true" signature="1950:1951" ph="..." />
+            <marker date="1543161602668" expanded="true" signature="3022:5869" ph="..." />
+            <marker date="1543161602668" expanded="true" signature="5519:5524" ph="..." />
+            <marker date="1543161602668" expanded="true" signature="5671:5767" ph="..." />
+            <marker date="1543161602668" expanded="true" signature="5896:5901" ph="..." />
+            <marker date="1543161602668" expanded="true" signature="7251:7256" ph="..." />
+            <marker date="1543161602668" expanded="true" signature="10255:10260" ph="..." />
           </folding>
         </state>
       </provider>
