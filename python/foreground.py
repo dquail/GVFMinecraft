@@ -60,9 +60,6 @@ def didTouchCumulant(phi):
     return phi[len(phi) - 1]
 
 
-def didtouchGamma(phi):
-  return 0
-
 
 class Foreground:
 
@@ -84,6 +81,7 @@ class Foreground:
     self.oldPhi = self.stateRepresentation.getEmptyPhi()
 
   def configureGVFs(self, simplePhi=False):
+    touchThreshold = 0.8  # The prediction value before it is considered to be true.
     '''
     Layer 1 - Touch (T)
     '''
@@ -98,6 +96,10 @@ class Foreground:
 
     touchGVF.cumulant = didTouchCumulant
     touchGVF.policy = self.behaviorPolicy.extendHandPolicy
+
+    def didtouchGamma(phi):
+      return 0
+
     touchGVF.gamma = didtouchGamma
     self.gvfs[touchGVF.name] = touchGVF
 
@@ -158,22 +160,26 @@ class Foreground:
                              
 
     def touchAdjacentCumulant(phi):
-      touchThreshold = 0.8  # The prediction value before it is considered to be true.
+
       touchAdjacent = 0.0
       touchAdjacent = max([self.gvfs['T'].prediction(phi), self.gvfs['TL'].prediction(phi), self.gvfs['TR'].prediction(phi), self.gvfs['TB'].prediction(phi)])
-      '''
+
       if touchAdjacent > touchThreshold:
         touchAdjacent = 1.0
       else:
         touchAdjacent = 0.0
-      '''
+
       return touchAdjacent
 
     touchAdjacentGVF.cumulant = touchAdjacentCumulant
-    touchAdjacentGVF.policy = self.behaviorPolicy.moveForwardPolicy
+    touchAdjacentGVF.policy = self.behaviorPolicy.turnRightPolicy
 
     def touchAdjacentGama(phi):
-      return 0
+      if touchAdjacentCumulant(phi) == 1.0:
+        return 0
+      else:
+        return 1
+
 
     touchAdjacentGVF.gamma = touchAdjacentGama
     self.gvfs[touchAdjacentGVF.name] = touchAdjacentGVF
@@ -194,15 +200,26 @@ class Foreground:
       distanceToTouchAdjacentGVF = GVF(featureVectorLength=TOTAL_FEATURE_LENGTH,
                              alpha=0.10 / (NUM_IMAGE_TILINGS * NUMBER_OF_PIXEL_SAMPLES), isOffPolicy=True, name="DTA")
 
-    distanceToTouchAdjacentGVF.cumulant = self.gvfs['TA'].prediction
-    distanceToTouchAdjacentGVF.policy = self.behaviorPolicy.turnLeftPolicy
-    distanceToTouchAdjacentGVF.gamma = didtouchGamma
+    def distanceToTouchAdjacentCumulant(phi):
+      return 1.0
+
+    distanceToTouchAdjacentGVF.cumulant = distanceToTouchAdjacentCumulant
+    distanceToTouchAdjacentGVF.policy = self.behaviorPolicy.moveForwardPolicy
+
+    def distanceToTouchAdjacentGamma(phi):
+      prediction = self.gvfs['T'].prediction(phi) #TODO - change to self.gvfs['TA'].prediction() after testing
+      if prediction > touchThreshold:
+        return 0
+      else:
+        return 1
+
+    distanceToTouchAdjacentGVF.gamma = distanceToTouchAdjacentGamma
+
     self.gvfs[distanceToTouchAdjacentGVF.name] = distanceToTouchAdjacentGVF
 
 
     def distanceToTouchAdjacentGamma(phi):
       touchAdjacentPrediction = self.gvfs['TA']
-      touchThreshold = 0.8
       if touchAdjacentPrediction > touchThreshold:
         return 0
       else:

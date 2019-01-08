@@ -78,12 +78,26 @@ def distanceToAdjacent(currentState):
   msg = currentState.observations[0].text
   # print(msg)
 
-  observations = json.loads(msg)  # and parse the JSON
-  grid = observations.get(u'floor3x3', 0)  # and get the grid we asked for
-  yaw = observations.get(u'Yaw', 0)
-  #TODO - Return actual value here.
+  observation = json.loads(msg)  # and parse the JSON
+  grid = observation.get(u'floor3x3', 0)  # and get the grid we asked for
+  yaw = observation.get(u'Yaw', 0)
+  xPos = observation.get(u'XPos', 0)
+  zPos = observation.get(u'ZPos', 0)
+  if (yaw == 0.0):
+    # Facing south
+    distance = 4.5 - zPos
+  elif (yaw == 90.0):
+    # Facing west
+    distance = xPos + 3.5
+  elif (yaw == 180.0):
+    # Facing north
+    distance = zPos + 3.5
+  elif (yaw == -90 or yaw == 270):
+    # Facing east
+    distance = 4.5 - xPos
 
-  return 999
+
+  return distance
 
 def isWallBehind(currentState):
   msg = currentState.observations[0].text

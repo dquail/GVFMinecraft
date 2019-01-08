@@ -12,10 +12,18 @@
       <change beforePath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/treeSnapshots.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/treeSnapshots.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Minecraft/.gradle/gradle.log" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/.gradle/gradle.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Minecraft/build/libs/MalmoMod-0.35.6.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/build/libs/MalmoMod-0.35.6.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/GVF.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/GVF.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/StateRepresentation.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/StateRepresentation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/constants.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/display.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/display.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python (copy)/BehaviorPolicy.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python (copy)/GVF.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python (copy)/MalmoPython.so" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python (copy)/StateRepresentation.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python (copy)/Voronoi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python (copy)/constants.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python (copy)/display.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python (copy)/foreground.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python (copy)/malmoutils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python (copy)/peakAtState.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python (copy)/simpleMission.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/python (copy)/tiles.py" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/python/foreground.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/foreground.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/python/peakAtState.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/peakAtState.py" afterDir="false" />
     </list>
@@ -27,11 +35,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/python/foreground.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="80">
-              <caret line="261" column="8" selection-start-line="261" selection-start-column="8" selection-end-line="261" selection-end-column="8" />
+            <state relative-caret-position="136">
+              <caret line="389" lean-forward="true" selection-start-line="389" selection-end-line="390" selection-end-column="36" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -40,12 +48,33 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/python/simpleMission.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="542">
+              <caret line="50" column="35" selection-start-line="50" selection-start-column="35" selection-end-line="50" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/python/GVF.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="160">
+              <caret line="105" selection-start-line="105" selection-end-line="105" />
+              <folding>
+                <element signature="e#0#12#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/python/peakAtState.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" selection-start-line="4" selection-end-line="4" />
+            <state relative-caret-position="315">
+              <caret line="96" column="25" selection-start-line="96" selection-start-column="25" selection-end-line="96" selection-end-column="25" />
               <folding>
-                <marker date="1546886179483" expanded="true" signature="1304:2672" ph="..." />
+                <marker date="1546978840987" expanded="true" signature="1304:2990" ph="..." />
               </folding>
             </state>
           </provider>
@@ -63,7 +92,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/python/display.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
+            <state relative-caret-position="435">
               <caret line="31" column="45" selection-start-line="31" selection-start-column="45" selection-end-line="31" selection-end-column="45" />
             </state>
           </provider>
@@ -72,7 +101,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/python/StateRepresentation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
+            <state relative-caret-position="405">
               <caret line="33" column="84" selection-start-line="33" selection-start-column="71" selection-end-line="33" selection-end-column="84" />
               <folding>
                 <element signature="e#25#48#0" expanded="true" />
@@ -85,13 +114,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>in self.gvfs</find>
-      <find>16</find>
-      <find>no_action</find>
-      <find>.sleep</find>
-      <find>USE_SIMPLE_PHI</find>
-      <find>getPHI</find>
-      <find>STUPId</find>
       <find>WTH</find>
       <find>updateUP</find>
       <find>Action was</find>
@@ -108,13 +130,20 @@
       <find>REMOVE</find>
       <find>gtdLearm</find>
       <find>getPhi</find>
-      <find>updateUI</find>
       <find>frame</find>
       <find>try</find>
       <find>threshold</find>
       <find>NUMBER_OF_GVF</find>
       <find>Error G</find>
       <find>except</find>
+      <find>didTouchGamma</find>
+      <find>touchThresho</find>
+      <find>from observat</find>
+      <find>-3.5</find>
+      <find>-3.55</find>
+      <find>observations</find>
+      <find>updateUI</find>
+      <find>From ob</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/Python_Examples</dir>
@@ -152,24 +181,24 @@
         <option value="$PROJECT_DIR$/python/tiles.py" />
         <option value="$PROJECT_DIR$/python/GVF.py" />
         <option value="$PROJECT_DIR$/python/constants.py" />
-        <option value="$PROJECT_DIR$/python/peakAtState.py" />
         <option value="$PROJECT_DIR$/python/display.py" />
         <option value="$PROJECT_DIR$/python/StateRepresentation.py" />
         <option value="$PROJECT_DIR$/python/foreground.py" />
+        <option value="$PROJECT_DIR$/python/peakAtState.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="x" value="1920" />
-    <option name="y" value="-2" />
-    <option name="width" value="1920" />
-    <option name="height" value="1082" />
+    <option name="width" value="1717" />
+    <option name="height" value="965" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -186,7 +215,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -339,15 +367,16 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1920" y="-2" width="1920" height="1082" extended-state="6" />
+    <frame x="1920" y="0" width="1717" height="965" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6933798" visible="true" weight="0.0843437" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6933798" visible="true" weight="0.16528925" />
       <window_info id="Structure" order="1" sideWeight="0.3066202" side_tool="true" weight="0.2366824" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32943925" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.46589717" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.30622008" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -715,13 +744,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/python/simpleMission.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="750">
-          <caret line="50" column="35" selection-start-line="50" selection-start-column="35" selection-end-line="50" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/python/tiles.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3360">
@@ -750,26 +772,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/python/GVF.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="130" selection-start-line="130" selection-end-line="130" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/python/StateRepresentation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="33" column="84" selection-start-line="33" selection-start-column="71" selection-end-line="33" selection-end-column="84" />
-          <folding>
-            <element signature="e#25#48#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -777,29 +779,56 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/python/peakAtState.py">
+    <entry file="file://$PROJECT_DIR$/python/display.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        <state relative-caret-position="435">
+          <caret line="31" column="45" selection-start-line="31" selection-start-column="45" selection-end-line="31" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python/StateRepresentation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="33" column="84" selection-start-line="33" selection-start-column="71" selection-end-line="33" selection-end-column="84" />
           <folding>
-            <marker date="1546886179483" expanded="true" signature="1304:2672" ph="..." />
+            <element signature="e#25#48#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/python/display.py">
+    <entry file="file://$PROJECT_DIR$/python/GVF.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="31" column="45" selection-start-line="31" selection-start-column="45" selection-end-line="31" selection-end-column="45" />
+        <state relative-caret-position="160">
+          <caret line="105" selection-start-line="105" selection-end-line="105" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python/simpleMission.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="542">
+          <caret line="50" column="35" selection-start-line="50" selection-start-column="35" selection-end-line="50" selection-end-column="35" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/python/foreground.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="261" column="8" selection-start-line="261" selection-start-column="8" selection-end-line="261" selection-end-column="8" />
+        <state relative-caret-position="136">
+          <caret line="389" lean-forward="true" selection-start-line="389" selection-end-line="390" selection-end-column="36" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/python/peakAtState.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="96" column="25" selection-start-line="96" selection-start-column="25" selection-end-line="96" selection-end-column="25" />
+          <folding>
+            <marker date="1546978840987" expanded="true" signature="1304:2990" ph="..." />
           </folding>
         </state>
       </provider>
