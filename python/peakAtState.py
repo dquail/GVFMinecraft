@@ -74,6 +74,43 @@ def isWallAdjacent(currentState):
 
   return isBlock
 
+def distanceToAdjacent(currentState):
+  msg = currentState.observations[0].text
+  # print(msg)
+
+  observations = json.loads(msg)  # and parse the JSON
+  grid = observations.get(u'floor3x3', 0)  # and get the grid we asked for
+  yaw = observations.get(u'Yaw', 0)
+  #TODO - Return actual value here.
+
+  return 999
+
+def isWallBehind(currentState):
+  msg = currentState.observations[0].text
+  # print(msg)
+
+  observations = json.loads(msg)  # and parse the JSON
+  grid = observations.get(u'floor3x3', 0)  # and get the grid we asked for
+  yaw = observations.get(u'Yaw', 0)
+  rightIdx = 1
+  isBlock = False
+  if (yaw == 0.0):
+    # Facing south
+    rightIdx = 1
+  elif (yaw == 90.0):
+    # Facing west
+    rightIdx = 5
+  elif (yaw == 180.0):
+    # Facing north
+    rightIdx = 7
+  elif (yaw == -90 or yaw == 270):
+    # Facing east
+    rightIdx = 3
+  if not grid[rightIdx] == "air":
+    isBlock = True
+
+  return isBlock
+
 def isWallOnRight(currentState):
   msg = currentState.observations[0].text
   # print(msg)

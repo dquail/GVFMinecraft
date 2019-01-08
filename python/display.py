@@ -47,10 +47,21 @@ class Display(object):
     self.turnRightAndTouchPredictionLabel = Label(self.root, textvariable = self.turnRightAndTouchPrediction)
     self.turnRightAndTouchPredictionLabel.pack(side = "top", anchor = "w")
 
+    #Touch behind prediction
+    self.touchBehindPrediction = StringVar()
+    self.touchBehindPredictionLabel = Label(self.root, textvariable = self.touchBehindPrediction)
+    self.touchBehindPredictionLabel.pack(side = "top", anchor = "w")
+
+
     #Wall Adjacent prediction
     self.isWallAdjacentPrediction = StringVar()
     self.isWallAdjacentPredictionLabel = Label(self.root, textvariable = self.isWallAdjacentPrediction)
     self.isWallAdjacentPredictionLabel.pack(side = "top", anchor = "w")
+
+    #Distance to adjacent prediction
+    self.distanceToAdjacent = StringVar()
+    self.distanceToAdjacentLabel = Label(self.root, textvariable = self.distanceToAdjacent)
+    self.distanceToAdjacentLabel.pack(side = "top", anchor = "w")
 
     #Number of steps
     self.numberOfSteps = StringVar()
@@ -78,8 +89,13 @@ class Display(object):
              wallOnLeft,
              turnRightAndTouchPrediction,
              wallOnRight,
+             touchBehindPrediction,
+             wallBehind,
              touchAdjacentPrediction,
+             distanceToAdjacent,
+             distanceToAdjacentPrediction,
              wallAdjacent):
+
     #Update labels
     self.touchPrediction.set("T: " + str(currentTouchPrediction))
     if wallInFront:
@@ -99,11 +115,19 @@ class Display(object):
     else:
       self.turnRightAndTouchPredictionLabel.config(fg='red')
 
+    self.touchBehindPrediction.set("TB: " + str(touchBehindPrediction))
+    if wallBehind:
+      self.touchBehindPredictionLabel.config(fg='blue')
+    else:
+      self.touchBehindPredictionLabel.config(fg='red')
+
     self.isWallAdjacentPrediction.set("TA: " + str(touchAdjacentPrediction))
     if wallAdjacent:
       self.isWallAdjacentPredictionLabel.config(fg = 'blue')
     else:
       self.isWallAdjacentPredictionLabel.config(fg = 'red')
+
+    self.distanceToAdjacent.set("DTA:" + str(distanceToAdjacentPrediction) + "(" + str(distanceToAdjacent) + ")")
 
     self.numberOfSteps.set("Step: " + str(numberOfSteps))
     if didTouch:

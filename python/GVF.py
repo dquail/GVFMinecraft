@@ -107,7 +107,21 @@ class GVF:
         #print("gammaNext: " + str(gammaNext))
         lam = self.lam(newState)
         #print("gammaLast: " + str(self.gammaLast))
-
+        '''
+        #TODO REMOVE AFTER TESTING
+        changedOldIndexes = []
+        changedNewIndexes = []
+        if self.name == 'TA':
+            for i in range( PIXEL_FEATURE_LENGTH * NUMBER_OF_PIXEL_SAMPLES -1):
+                if lastState[i] >0:
+                    lastState[i]=0
+                    changedOldIndexes.append(i)
+                if newState[i]>0:
+                    newState[i] = 0
+                    changedNewIndexes.append(i)
+                lastState[i] = 0
+                newState[i]=0
+        '''
         #print("lambda: " + str(lam))
         rho = self.rho(action, lastState)
         #print("rho: " + str(rho))
@@ -191,6 +205,14 @@ class GVF:
 
         self.gammaLast = gammaNext
 
+        '''
+        #TODO REMOVE AFTER TESTING
+        if self.name == 'TA':
+            for idx in changedOldIndexes:
+                lastState[idx] = 1
+            for idx in changedNewIndexes:
+                newState[idx] = 1
+        '''
 
     def tdLearn(self, lastState, action, newState):
         print("!!!!! LEARN  !!!!!!!")

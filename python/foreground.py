@@ -47,8 +47,8 @@ else:
 
   print = functools.partial(print, flush=True)
 
-def didTouchCumulant(phi):
 
+def didTouchCumulant(phi):
   if USE_SIMPLE_PHI:
 
     idx = np.nonzero(phi)[0][0]
@@ -59,6 +59,7 @@ def didTouchCumulant(phi):
   else:
     return phi[len(phi) - 1]
 
+
 def didtouchGamma(phi):
   return 0
 
@@ -68,23 +69,21 @@ class Foreground:
   def __init__(self):
     self.agent_host = MalmoPython.AgentHost()
     self.agent_host.setObservationsPolicy(MalmoPython.ObservationsPolicy.LATEST_OBSERVATION_ONLY)
-    #self.agent_host.setObservationsPolicy(MalmoPython.ObservationsPolicy.KEEP_ALL_OBSERVATIONS)
+    # self.agent_host.setObservationsPolicy(MalmoPython.ObservationsPolicy.KEEP_ALL_OBSERVATIONS)
     self.agent_host.setVideoPolicy(MalmoPython.VideoPolicy.LATEST_FRAME_ONLY)
-    #self.agent_host.setVideoPolicy(MalmoPython.VideoPolicy.KEEP_ALL_FRAMES)
+    # self.agent_host.setVideoPolicy(MalmoPython.VideoPolicy.KEEP_ALL_FRAMES)
     self.behaviorPolicy = BehaviorPolicy()
 
     self.display = Display()
     self.gvfs = {}
-    self.configureGVFs(simplePhi = USE_SIMPLE_PHI)
+    self.configureGVFs(simplePhi=USE_SIMPLE_PHI)
     self.stateRepresentation = StateRepresentation(self.gvfs)
     self.state = False
     self.oldState = False
     self.phi = self.stateRepresentation.getEmptyPhi()
     self.oldPhi = self.stateRepresentation.getEmptyPhi()
 
-
-
-  def configureGVFs(self, simplePhi = False):
+  def configureGVFs(self, simplePhi=False):
     '''
     Layer 1 - Touch (T)
     '''
@@ -92,9 +91,10 @@ class Foreground:
     if simplePhi:
 
       touchGVF = GVF(featureVectorLength=TOTAL_FEATURE_LENGTH, alpha=0.70,
-                   isOffPolicy=True, name="T")
+                     isOffPolicy=True, name="T")
     else:
-      touchGVF = GVF(featureVectorLength =TOTAL_FEATURE_LENGTH, alpha = 0.10 /( NUM_IMAGE_TILINGS * NUMBER_OF_PIXEL_SAMPLES), isOffPolicy=True, name="T")
+      touchGVF = GVF(featureVectorLength=TOTAL_FEATURE_LENGTH,
+                     alpha=0.10 / (NUM_IMAGE_TILINGS * NUMBER_OF_PIXEL_SAMPLES), isOffPolicy=True, name="T")
 
     touchGVF.cumulant = didTouchCumulant
     touchGVF.policy = self.behaviorPolicy.extendHandPolicy
@@ -111,19 +111,17 @@ class Foreground:
       turnLeftGVF = GVF(featureVectorLength=TOTAL_FEATURE_LENGTH,
                         alpha=0.10 / (NUM_IMAGE_TILINGS * NUMBER_OF_PIXEL_SAMPLES), isOffPolicy=True, name="TL")
 
-
     turnLeftGVF.cumulant = self.gvfs['T'].prediction
     turnLeftGVF.policy = self.behaviorPolicy.turnLeftPolicy
     turnLeftGVF.gamma = didtouchGamma
     self.gvfs[turnLeftGVF.name] = turnLeftGVF
 
-
     if simplePhi:
       turnRightGVF = GVF(featureVectorLength=TOTAL_FEATURE_LENGTH,
-                        alpha=0.70, isOffPolicy=True, name="TR")
+                         alpha=0.70, isOffPolicy=True, name="TR")
     else:
       turnRightGVF = GVF(featureVectorLength=TOTAL_FEATURE_LENGTH,
-                        alpha=0.10 / (NUM_IMAGE_TILINGS * NUMBER_OF_PIXEL_SAMPLES), isOffPolicy=True, name="TR")
+                         alpha=0.10 / (NUM_IMAGE_TILINGS * NUMBER_OF_PIXEL_SAMPLES), isOffPolicy=True, name="TR")
 
     turnRightGVF.cumulant = self.gvfs['T'].prediction
     turnRightGVF.policy = self.behaviorPolicy.turnRightPolicy
@@ -131,36 +129,86 @@ class Foreground:
     self.gvfs[turnRightGVF.name] = turnRightGVF
 
     '''
-    #Layer 3 - Touch Adjacent (TA)
+    #Layer 3 - Touch Behind
+    '''
+    if simplePhi:
+      touchBehindGVF = GVF(featureVectorLength=TOTAL_FEATURE_LENGTH,
+                        alpha=0.70, isOffPolicy=True, name="TB")
+    else:
+      touchBehindGVF = GVF(featureVectorLength=TOTAL_FEATURE_LENGTH,
+                        alpha=0.10 / (NUM_IMAGE_TILINGS * NUMBER_OF_PIXEL_SAMPLES), isOffPolicy=True, name="TB")
+
+    touchBehindGVF.cumulant = self.gvfs['TR'].prediction
+    touchBehindGVF.policy = self.behaviorPolicy.turnRightPolicy
+    touchBehindGVF.gamma = didtouchGamma
+    self.gvfs[touchBehindGVF.name] = touchBehindGVF
+
+
+    '''
+    #Layer 4 - Touch Adjacent (TA)
     '''
 
     if simplePhi:
       touchAdjacentGVF = GVF(featureVectorLength=TOTAL_FEATURE_LENGTH,
-                            alpha=0.70, isOffPolicy=True, name="TA")
+                             alpha=0.70, isOffPolicy=True, name="TA")
     else:
+
       touchAdjacentGVF = GVF(featureVectorLength=TOTAL_FEATURE_LENGTH,
-                       alpha=0.10 / (NUM_IMAGE_TILINGS * NUMBER_OF_PIXEL_SAMPLES), isOffPolicy=True, name="TA")
+                             alpha=0.10 / (NUM_IMAGE_TILINGS * NUMBER_OF_PIXEL_SAMPLES), isOffPolicy=True, name="TA")
+                             
 
     def touchAdjacentCumulant(phi):
-      touchThreshold = 0.8 #The prediction value before it is considered to be true.
+      touchThreshold = 0.8  # The prediction value before it is considered to be true.
       touchAdjacent = 0.0
-      touchAdjacent = max([self.gvfs['T'].prediction(phi), self.gvfs['TL'].prediction(phi), self.gvfs['TR'].prediction(phi)])
-      if touchAdjacent > 0.8:
+      touchAdjacent = max([self.gvfs['T'].prediction(phi), self.gvfs['TL'].prediction(phi), self.gvfs['TR'].prediction(phi), self.gvfs['TB'].prediction(phi)])
+      '''
+      if touchAdjacent > touchThreshold:
         touchAdjacent = 1.0
       else:
         touchAdjacent = 0.0
+      '''
       return touchAdjacent
 
     touchAdjacentGVF.cumulant = touchAdjacentCumulant
-    touchAdjacentGVF.policy = self.behaviorPolicy.turnRightPolicy
+    touchAdjacentGVF.policy = self.behaviorPolicy.moveForwardPolicy
+
     def touchAdjacentGama(phi):
-      if touchAdjacentCumulant(phi) == 1.0:
+      return 0
+
+    touchAdjacentGVF.gamma = touchAdjacentGama
+    self.gvfs[touchAdjacentGVF.name] = touchAdjacentGVF
+
+    '''
+    #Layer 5 - Distance to touch adjacent (DTA)
+    Measures how many steps the agent is from being adjacent touch something.
+    * Note that because our agent only rotates 90 degrees at a time, this is basically the 
+     number of steps to a wall. So the cumulant could be T. But we have the cumulant as TA instead 
+     since this would allow for an agent whose rotations are not 90 degrees.
+    '''
+
+    if simplePhi:
+      distanceToTouchAdjacentGVF = GVF(featureVectorLength=TOTAL_FEATURE_LENGTH,
+                             alpha=0.70, isOffPolicy=True, name="DTA")
+    else:
+
+      distanceToTouchAdjacentGVF = GVF(featureVectorLength=TOTAL_FEATURE_LENGTH,
+                             alpha=0.10 / (NUM_IMAGE_TILINGS * NUMBER_OF_PIXEL_SAMPLES), isOffPolicy=True, name="DTA")
+
+    distanceToTouchAdjacentGVF.cumulant = self.gvfs['TA'].prediction
+    distanceToTouchAdjacentGVF.policy = self.behaviorPolicy.turnLeftPolicy
+    distanceToTouchAdjacentGVF.gamma = didtouchGamma
+    self.gvfs[distanceToTouchAdjacentGVF.name] = distanceToTouchAdjacentGVF
+
+
+    def distanceToTouchAdjacentGamma(phi):
+      touchAdjacentPrediction = self.gvfs['TA']
+      touchThreshold = 0.8
+      if touchAdjacentPrediction > touchThreshold:
         return 0
       else:
         return 1
 
-    touchAdjacentGVF.gamma = touchAdjacentGama
-    self.gvfs[touchAdjacentGVF.name] = touchAdjacentGVF
+
 
   def start_agent_host(self):
     try:
@@ -174,7 +222,7 @@ class Foreground:
       print(self.agent_host.getUsage())
       exit(0)
 
-    #missionXML is from simpleMission.py
+    # missionXML is from simpleMission.py
     my_mission = MalmoPython.MissionSpec(missionXML, True)
     my_mission_record = MalmoPython.MissionRecordSpec()
 
@@ -208,9 +256,9 @@ class Foreground:
     for name, gvf in self.gvfs.items():
       gvf.learn(lastState=self.oldPhi, action=self.action, newState=self.phi)
 
-
   def updateUI(self):
-    #Create a voronoi image
+    # Create a voronoi image
+
     try:
       frame = self.state.video_frames[0].pixels
       # rgb = self.s
@@ -219,7 +267,7 @@ class Foreground:
       # cv2.imshow('My Image', voronoi)
       # cv2.waitKey(0)
 
-      didTouch = self.stateRepresentation.didTouch(previousAction = self.action, currentState = self.oldState)
+      didTouch = self.stateRepresentation.didTouch(previousAction=self.action, currentState=self.oldState)
 
       inFront = peak.isWallInFront(self.state)
       touchPrediction = self.gvfs['T'].prediction(self.phi)
@@ -259,21 +307,34 @@ class Foreground:
       onRight = peak.isWallOnRight(self.state)
       turnRightAndtouchPrediction = self.gvfs['TR'].prediction(self.phi)
 
+      isBehind = peak.isWallBehind(self.state)
+      touchBehindPrediction = self.gvfs['TB'].prediction(self.phi)
+
       wallAdjacent = peak.isWallAdjacent(self.state)
       isWallAdjacentPrediction = self.gvfs['TA'].prediction(self.phi)
+
+      distanceToAdjacent = peak.distanceToAdjacent(self.state)
+      distanceToAdjacentPrediction = self.gvfs['DTA'].prediction(self.phi)
+
 
       self.display.update(image=voronoi,
                           numberOfSteps=self.actionCount,
                           currentTouchPrediction=touchPrediction,
-                          wallInFront = inFront,
+                          wallInFront=inFront,
                           didTouch=didTouch,
-                          turnLeftAndTouchPrediction = turnLeftAndTouchPrediction,
-                          wallOnLeft = onLeft,
-                          turnRightAndTouchPrediction = turnRightAndtouchPrediction,
-                          touchAdjacentPrediction = isWallAdjacentPrediction,
-                          wallAdjacent = wallAdjacent,
-                          wallOnRight = onRight)
-      #time.sleep(1.0)
+                          turnLeftAndTouchPrediction=turnLeftAndTouchPrediction,
+                          wallOnLeft=onLeft,
+                          turnRightAndTouchPrediction=turnRightAndtouchPrediction,
+                          touchBehindPrediction = touchBehindPrediction,
+                          wallBehind = isBehind,
+                          touchAdjacentPrediction=isWallAdjacentPrediction,
+                          wallAdjacent=wallAdjacent,
+                          wallOnRight=onRight,
+                          distanceToAdjacent = distanceToAdjacent,
+                          distanceToAdjacentPrediction = distanceToAdjacentPrediction
+                          )
+      # time.sleep(1.0)
+
     except:
       print("Error gettnig frame")
 
@@ -287,12 +348,12 @@ class Foreground:
     # Loop until mission ends:
     while self.state.is_mission_running:
       self.actionCount += 1
-      #print(".", end="")
+      # print(".", end="")
 
       self.oldState = self.state
       self.oldPhi = self.phi
 
-      #Select and send action. Need to sleep to give time for simulator to respond
+      # Select and send action. Need to sleep to give time for simulator to respond
       self.action = self.behaviorPolicy.mostlyForwardAndTouchPolicy(self.state)
       self.agent_host.sendCommand(self.action)
       time.sleep(0.20)
@@ -301,9 +362,9 @@ class Foreground:
 
         print("==========")
         print("Action was: " + str(self.action))
-        #print("Number of observations since last: " + str(self.state.number_of_observations_since_last_state))
-        #print("Length of observation array: " + str(len(self.state.observations)))
-        #print("Number of video frames: " + str(len(self.state.video_frames)))
+        # print("Number of observations since last: " + str(self.state.number_of_observations_since_last_state))
+        # print("Length of observation array: " + str(len(self.state.observations)))
+        # print("Number of video frames: " + str(len(self.state.video_frames)))
 
         for observation in self.oldState.observations:
           msg = observation.text
@@ -335,16 +396,16 @@ class Foreground:
         for error in self.state.errors:
           print("Error:", error.text)
         # Simple phi
-        self.phi = self.stateRepresentation.getPhi(previousPhi = self.oldPhi, state=self.state, previousAction=self.action, simplePhi = USE_SIMPLE_PHI)
+        self.phi = self.stateRepresentation.getPhi(previousPhi=self.oldPhi, state=self.state,
+                                                   previousAction=self.action, simplePhi=USE_SIMPLE_PHI)
 
-        #Do the learning
+        # Do the learning
         self.learn()
 
-        #Update our display (for debugging and progress reporting)
+        # Update our display (for debugging and progress reporting)
         self.updateUI()
 
-
-      #Get new state
+      # Get new state
 
       """
       - Choose action
@@ -353,12 +414,13 @@ class Foreground:
       - Make previous observe old
       - Learn
       - Update display
-      
+
       """
 
     print()
     print("Mission ended")
     # Mission has ended.
+
 
 fg = Foreground()
 fg.start()
