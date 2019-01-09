@@ -68,6 +68,20 @@ class Display(object):
     self.numberOfStepsLabel = Label(self.root, textvariable = self.numberOfSteps)
     self.numberOfStepsLabel.pack(side = "top", anchor = "w")
 
+    #Number of Steps Left
+    self.numberOfStepsLeft = StringVar()
+    self.numberOfStepsLeftLabel = Label(self.root, textvariable=self.numberOfStepsLeft)
+    self.numberOfStepsLeftLabel.pack(side="top", anchor="w")
+
+    #Number of Steps Right
+    self.numberOfStepsRight = StringVar()
+    self.numberOfStepsRightLabel = Label(self.root, textvariable=self.numberOfStepsRight)
+    self.numberOfStepsRightLabel.pack(side="top", anchor="w")
+
+    #Number of Steps Back
+    self.numberOfStepsBack = StringVar()
+    self.numberOfStepsBackLabel = Label(self.root, textvariable=self.numberOfStepsBack)
+    self.numberOfStepsBackLabel.pack(side="top", anchor="w")
     self.reset()
 
 
@@ -94,6 +108,12 @@ class Display(object):
              touchAdjacentPrediction,
              distanceToAdjacent,
              distanceToAdjacentPrediction,
+             distanceToLeft,
+             distanceToLeftPrediction,
+             distanceToRight,
+             distanceToRightPrediction,
+             distanceBack,
+             distanceBackPrediction,
              wallAdjacent):
 
     #Update labels
@@ -128,6 +148,9 @@ class Display(object):
       self.isWallAdjacentPredictionLabel.config(fg = 'red')
 
     self.distanceToAdjacent.set("DTA:" + str(distanceToAdjacentPrediction) + "(" + str(distanceToAdjacent) + ")")
+    self.numberOfStepsLeft.set("DTL:" + str(distanceToLeftPrediction) + "(" + str(distanceToLeft) + ")")
+    self.numberOfStepsRight.set("DTR:" + str(distanceToRightPrediction) + "(" + str(distanceToRight) + ")")
+    self.numberOfStepsBack.set("DTB:" + str(distanceBackPrediction) + "(" + str(distanceBack) + ")")
 
     self.numberOfSteps.set("Step: " + str(numberOfSteps))
     if didTouch:

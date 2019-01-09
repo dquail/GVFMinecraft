@@ -218,14 +218,73 @@ class Foreground:
     self.gvfs[distanceToTouchAdjacentGVF.name] = distanceToTouchAdjacentGVF
 
 
-    def distanceToTouchAdjacentGamma(phi):
-      touchAdjacentPrediction = self.gvfs['TA']
-      if touchAdjacentPrediction > touchThreshold:
-        return 0
-      else:
-        return 1
+    '''
+    Layer 6 - Distance to Left (DTL), distance to right (DTR), distance back (DTB)
+    Measures how many steps to the left, or right, or behind,the agent is from a wall.
+    '''
 
+    #Distance to Left GVF
+    if simplePhi:
+      distanceToLeftGVF = GVF(featureVectorLength=TOTAL_FEATURE_LENGTH,
+                             alpha=0.70, isOffPolicy=True, name="DTL")
+    else:
 
+      distanceToLeftGVF = GVF(featureVectorLength=TOTAL_FEATURE_LENGTH,
+                             alpha=0.10 / (NUM_IMAGE_TILINGS * NUMBER_OF_PIXEL_SAMPLES), isOffPolicy=True, name="DTL")
+
+    def distanceToLeftCumulant(phi):
+      return self.gvfs['DTA'].prediction(phi)
+
+    distanceToLeftGVF.cumulant = distanceToLeftCumulant
+
+    def distanceToLeftGamma(phi):
+      return 0
+
+    distanceToLeftGVF.gamma = distanceToLeftGamma
+    distanceToLeftGVF.policy = self.behaviorPolicy.turnLeftPolicy
+    self.gvfs[distanceToLeftGVF.name] = distanceToLeftGVF
+
+    # Distance to Right GVF
+    if simplePhi:
+      distanceToRightGVF = GVF(featureVectorLength=TOTAL_FEATURE_LENGTH,
+                              alpha=0.70, isOffPolicy=True, name="DTR")
+    else:
+
+      distanceToRightGVF = GVF(featureVectorLength=TOTAL_FEATURE_LENGTH,
+                              alpha=0.10 / (NUM_IMAGE_TILINGS * NUMBER_OF_PIXEL_SAMPLES), isOffPolicy=True, name="DTR")
+
+    def distanceToRightCumulant(phi):
+      return self.gvfs['DTA'].prediction(phi)
+
+    distanceToRightGVF.cumulant = distanceToRightCumulant
+
+    def distanceToRightGamma(phi):
+      return 0
+
+    distanceToRightGVF.gamma = distanceToRightGamma
+    distanceToRightGVF.policy = self.behaviorPolicy.turnRightPolicy
+    self.gvfs[distanceToRightGVF.name] = distanceToRightGVF
+
+    # Distance behind GVF
+    if simplePhi:
+      distanceToBackGVF = GVF(featureVectorLength=TOTAL_FEATURE_LENGTH,
+                              alpha=0.70, isOffPolicy=True, name="DTB")
+    else:
+
+      distanceToBackGVF = GVF(featureVectorLength=TOTAL_FEATURE_LENGTH,
+                              alpha=0.10 / (NUM_IMAGE_TILINGS * NUMBER_OF_PIXEL_SAMPLES), isOffPolicy=True, name="DTB")
+
+    def distanceToBackCumulant(phi):
+      return self.gvfs['DTR'].prediction(phi)
+
+    distanceToBackGVF.cumulant = distanceToBackCumulant
+
+    def distanceToBackGamma(phi):
+      return 0
+
+    distanceToBackGVF.gamma = distanceToBackGamma
+    distanceToBackGVF.policy = self.behaviorPolicy.turnRightPolicy
+    self.gvfs[distanceToBackGVF.name] = distanceToBackGVF
 
   def start_agent_host(self):
     try:
@@ -276,8 +335,15 @@ class Foreground:
   def updateUI(self):
     # Create a voronoi image
 
+    frameError = False
     try:
       frame = self.state.video_frames[0].pixels
+      msg = self.oldState.observations[0].text
+    except:
+      frameError = True
+      print("Error gettnig frame")
+
+    if not frameError:
       # rgb = self.s
       voronoi = voronoi_from_pixels(pixels=frame, dimensions=(WIDTH, HEIGHT),
                                     pixelsOfInterest=self.stateRepresentation.pointsOfInterest)
@@ -333,6 +399,14 @@ class Foreground:
       distanceToAdjacent = peak.distanceToAdjacent(self.state)
       distanceToAdjacentPrediction = self.gvfs['DTA'].prediction(self.phi)
 
+      distanceLeft = peak.distanceLeftToAdjacent(self.state)
+      distanceLeftPrediction = self.gvfs['DTL'].prediction(self.phi)
+
+      distanceRight = peak.distanceRightToAdjacent(self.state)
+      distanceRightPrediction = self.gvfs['DTR'].prediction(self.phi)
+
+      distanceBack = peak.distanceBehindToAdjacent(self.state)
+      distanceBackPrediction = self.gvfs['DTB'].prediction(self.phi)
 
       self.display.update(image=voronoi,
                           numberOfSteps=self.actionCount,
@@ -348,12 +422,17 @@ class Foreground:
                           wallAdjacent=wallAdjacent,
                           wallOnRight=onRight,
                           distanceToAdjacent = distanceToAdjacent,
-                          distanceToAdjacentPrediction = distanceToAdjacentPrediction
+                          distanceToAdjacentPrediction = distanceToAdjacentPrediction,
+                          distanceToLeft = distanceLeft,
+                          distanceToLeftPrediction = distanceLeftPrediction,
+                          distanceToRight = distanceRight,
+                          distanceToRightPrediction = distanceRightPrediction,
+                          distanceBack = distanceBack,
+                          distanceBackPrediction = distanceBackPrediction
                           )
       # time.sleep(1.0)
 
-    except:
-      print("Error gettnig frame")
+
 
   def start(self):
     self.start_agent_host()
