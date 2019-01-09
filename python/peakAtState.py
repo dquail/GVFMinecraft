@@ -96,7 +96,7 @@ def distanceToAdjacent(currentState):
     # Facing east
     distance = 8 - xPos
 
-  return distance - 1
+  return distance
 
 def distanceLeftToAdjacent(currentState):
   msg = currentState.observations[0].text
@@ -120,7 +120,7 @@ def distanceLeftToAdjacent(currentState):
     # Facing east
     distance = zPos
 
-  return distance - 1
+  return distance
 
 def distanceRightToAdjacent(currentState):
   msg = currentState.observations[0].text
@@ -144,7 +144,7 @@ def distanceRightToAdjacent(currentState):
     # Facing east
     distance = 8 - zPos
 
-  return distance - 1
+  return distance
 
 
 def distanceBehindToAdjacent(currentState):
@@ -169,7 +169,7 @@ def distanceBehindToAdjacent(currentState):
     # Facing east
     distance = xPos
 
-  return distance - 1
+  return distance
 
 def isWallBehind(currentState):
   msg = currentState.observations[0].text
