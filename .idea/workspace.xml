@@ -3,16 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3093333f-ac19-4763-9786-9edf311eb79b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/cache.properties.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/cache.properties.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/fileSnapshots.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/fileSnapshots.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/taskArtifacts.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/taskArtifacts.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/treeSnapshotUsage.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/treeSnapshotUsage.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/treeSnapshots.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/.gradle/2.14/taskArtifacts/treeSnapshots.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/.gradle/gradle.log" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/.gradle/gradle.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Minecraft/build/libs/MalmoMod-0.35.6.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Minecraft/build/libs/MalmoMod-0.35.6.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/python/display.py" beforeDir="false" afterPath="$PROJECT_DIR$/python/display.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -25,7 +16,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/python/foreground.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="351">
+            <state relative-caret-position="6870">
               <caret line="498" selection-start-line="498" selection-end-line="498" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
@@ -76,11 +67,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/python/display.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="529">
-              <caret line="84" selection-start-line="84" selection-end-line="84" />
+            <state relative-caret-position="574">
+              <caret line="84" lean-forward="true" selection-start-line="84" selection-end-line="84" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="90">
+                <caret line="6" column="95" selection-start-line="6" selection-start-column="95" selection-end-line="6" selection-end-column="95" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -172,6 +175,7 @@
         <option value="$PROJECT_DIR$/python/foreground.py" />
         <option value="$PROJECT_DIR$/python/peakAtState.py" />
         <option value="$PROJECT_DIR$/python/display.py" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -193,11 +197,6 @@
             <path>
               <item name="GVFMinecraft" type="b2602c69:ProjectViewProjectNode" />
               <item name="GVFMinecraft" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="GVFMinecraft" type="b2602c69:ProjectViewProjectNode" />
-              <item name="GVFMinecraft" type="462c0819:PsiDirectoryNode" />
-              <item name="python" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -356,8 +355,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="203" y="27" width="1717" height="965" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6933798" visible="true" weight="0.16528925" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6933798" visible="true" weight="0.16528925" />
       <window_info id="Structure" order="1" sideWeight="0.3066202" side_tool="true" weight="0.2366824" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -491,13 +491,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Python_Examples/tutorial_1.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="690">
-          <caret line="82" column="36" selection-start-line="82" selection-start-column="36" selection-end-line="82" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Python_Examples/tutorial_3.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-180">
@@ -766,7 +759,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/python/foreground.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="351">
+        <state relative-caret-position="6870">
           <caret line="498" selection-start-line="498" selection-end-line="498" />
           <folding>
             <element signature="e#0#37#0" expanded="true" />
@@ -820,8 +813,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/python/display.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="84" selection-start-line="84" selection-end-line="84" />
+        <state relative-caret-position="574">
+          <caret line="84" lean-forward="true" selection-start-line="84" selection-end-line="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="90">
+            <caret line="6" column="95" selection-start-line="6" selection-start-column="95" selection-end-line="6" selection-end-column="95" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
