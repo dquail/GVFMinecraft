@@ -10,6 +10,16 @@ else:
 from PIL import ImageTk
 from PIL import Image
 
+
+import matplotlib, sys
+import matplotlib.pyplot as plt
+
+matplotlib.use('TkAgg')
+from numpy import arange, sin, pi
+from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
+from matplotlib.figure import Figure
+
+
 video_width = 432
 video_height = 240
 
@@ -18,10 +28,24 @@ DISPLAY_HEIGHT = 432 + video_height
 
 class Display(object):
   def __init__(self):
+    plt.ion() #turn matplot interactive on
     self.root = Tk()
     self.root.wm_title("GVF Knowledge")
-    #self.root_frame = Frame(self.root)
-    #self.canvas = Canvas(self.root_frame, borderwidth=0, highlightthickness=0, width=WIDTH, height=HEIGHT, bg="black")
+
+
+    self.tAFigure = Figure(figsize=(4.3,2), dpi=100)
+    self.a = self.tAFigure.add_subplot(111)
+    t = arange(0.0, 3.0, 0.01)
+    self.s = sin(2 * pi * t)
+    self.sineLine, = self.a.plot(t, self.s, 'g', label = "TA")
+    self.a.legend()
+
+    self.dataPlot = FigureCanvasTkAgg(self.tAFigure, master=self.root)
+
+    self.dataPlot.draw()
+    self.dataPlot.get_tk_widget().pack(side = "top", anchor = "w")
+
+
     self.canvas = Canvas(self.root, borderwidth=0, highlightthickness=0, width=WIDTH, height=HEIGHT, bg="black")
     #self.canvas.config(width=WIDTH, height=HEIGHT)
     self.canvas.pack(padx=0, pady=0)
@@ -177,5 +201,9 @@ class Display(object):
     else:
       self.canvas.itemconfig(self.image_handle, image=self.photoImage)
 
+
+    self.s = self.s - 0.01
+    self.sineLine.set_ydata(self.s)
+    self.dataPlot.draw()
     self.root.update()
 
