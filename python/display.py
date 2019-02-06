@@ -15,7 +15,7 @@ import matplotlib, sys
 import matplotlib.pyplot as plt
 
 matplotlib.use('TkAgg')
-from numpy import arange, sin, pi
+import numpy as np
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 
@@ -33,17 +33,24 @@ class Display(object):
     self.root.wm_title("GVF Knowledge")
 
 
+    #Data 1
     self.tAFigure = Figure(figsize=(4.3,2), dpi=100)
-    self.a = self.tAFigure.add_subplot(111)
-    t = arange(0.0, 3.0, 0.01)
-    self.s = sin(2 * pi * t)
-    self.sineLine, = self.a.plot(t, self.s, 'g', label = "TA")
-    self.a.legend()
+    #self.a = self.tAFigure.add_subplot(111)
+    self.taPlot = self.tAFigure.add_subplot(111)
+    self.taPlot.set_ylim(-0.05, 1.05)
+    timeStepValues = np.arange(-50, 0, 1) #The last 50
+    self.taPredictions = [0.0] * 50
+    self.taPredictionLine, = self.taPlot.plot(timeStepValues, self.taPredictions, 'g', label = "TA(predict)")
+    self.taActualValues = [0.0] * 50
+    self.taActualLine, = self.taPlot.plot(timeStepValues, self.taActualValues, 'b', label="TA(actual)")
 
-    self.dataPlot = FigureCanvasTkAgg(self.tAFigure, master=self.root)
+    self.taPlot.legend()
+    self.taCanvas = FigureCanvasTkAgg(self.tAFigure, master=self.root) #canvas.get_tk_widget().grid(row=1,column=4,columnspan=3,rowspan=20)
 
-    self.dataPlot.draw()
-    self.dataPlot.get_tk_widget().pack(side = "top", anchor = "w")
+    self.taCanvas.draw()
+    self.taCanvas.get_tk_widget().pack(side = "top", anchor = "w")
+
+
 
 
     self.canvas = Canvas(self.root, borderwidth=0, highlightthickness=0, width=WIDTH, height=HEIGHT, bg="black")
@@ -201,9 +208,16 @@ class Display(object):
     else:
       self.canvas.itemconfig(self.image_handle, image=self.photoImage)
 
-
-    self.s = self.s - 0.01
-    self.sineLine.set_ydata(self.s)
-    self.dataPlot.draw()
+    self.taPredictions.pop(0)
+    self.taPredictions.append(currentTouchPrediction)
+    self.taActualValues.pop(0)
+    if (wallInFront):
+      touchActual = 1.0
+    else:
+      touchActual = 0.0
+    self.taActualValues.append(touchActual)
+    self.taPredictionLine.set_ydata(self.taPredictions)
+    self.taActualLine.set_ydata(self.taActualValues)
+    self.taCanvas.draw()
     self.root.update()
 
