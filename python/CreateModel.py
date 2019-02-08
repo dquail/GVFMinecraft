@@ -5,6 +5,7 @@ import sys
 import time
 import numpy as np
 import json
+import pickle
 import cv2
 from PIL import ImageTk
 from PIL import Image
@@ -95,16 +96,18 @@ class CreateModel:
         xPos = int(obs.get(u'XPos', 0) + 4.5)
         zPos = int(obs.get(u'ZPos', 0) + 4.5)
         videoFrame = state.video_frames[0]
-        cmap = Image.frombytes('RGB', (WIDTH, HEIGHT), bytes(videoFrame.pixels))
-        imageName = "model/x=" + str(xPos) + "y=" + str(zPos) + "yaw=" + str(yaw) + ".png"
-        cmap.save(imageName, "PNG")
+        #cmap = Image.frombytes('RGB', (WIDTH, HEIGHT), bytes(videoFrame.pixels))
+        #imageName = "model/x=" + str(xPos) + "y=" + str(zPos) + "yaw=" + str(yaw) + ".png"
+        #cmap.save(imageName, "PNG")
 
         pos = str(xPos) + "," + str(zPos)
         if pos not in self.grids:
           self.grids[pos] = {}
         self.grids[pos]['x'] = xPos
         self.grids[pos]['y'] = zPos
-        self.grids[pos][yaw] = imageName
+        #fileName = "image" + str(yaw)
+        #self.grids[pos][fileName] = imageName
+        self.grids[pos][str(yaw)] = videoFrame.pixels
 
         print("To observation: (" + str(xPos) + ", " + str(zPos) + "), yaw:" + str(yaw))
 
@@ -119,8 +122,13 @@ class CreateModel:
 
   def writeFile(self):
     print("Writing to file")
+    """
     with open('model/model.json', 'w') as outfile:
       json.dump(self.grids, outfile)
+    """
+    pickleFile = "grids"
+    with open('model/grids', 'wb') as outfile:
+      pickle.dump(self.grids, outfile)
 
 
 ################################
